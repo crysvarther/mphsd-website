@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#15294c"/>
+  <circle cx="32" cy="32" r="25" fill="#1e54cf"/>
+  <g fill="none" stroke="#f4b63e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M38 20a8 8 0 0 0 10 10L29 49a5.6 5.6 0 0 1-8-8z"/>
+    <path d="M38 20 45 13l6 6-7 7"/>
+  </g>
+  <text x="32" y="59" font-family="Arial Narrow, Arial, sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle" letter-spacing="1">MPH</text>
+</svg>

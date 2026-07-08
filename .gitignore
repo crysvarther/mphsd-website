@@ -1,0 +1,20 @@
+# OS / system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python (site generator)
+__pycache__/
+*.pyc
+*.pyo
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Backups & scratch (kept locally, not published)
+*_original.*
+*.bak
+_*.png
+_*.jpg
