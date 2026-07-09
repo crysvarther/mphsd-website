@@ -320,6 +320,10 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
 .bg-navy { background: var(--navy); color: #eaf1ff; }
 .bg-navy .section-title, .bg-navy h2, .bg-navy h3 { color:#fff; }
 .bg-navy .lead { color:#c5d2ee; }
+/* Cards keep their light background, so their text must stay dark even on dark sections */
+.bg-navy .card, .bg-teal .card { color: var(--ink-soft); }
+.bg-navy .card h3, .bg-teal .card h3 { color: var(--navy); }
+.bg-navy .card p, .bg-teal .card p { color: var(--ink-soft); }
 .bg-teal { background: var(--teal-deep); color:#eafffb; }
 .bg-teal .section-title, .bg-teal h2 { color:#fff; }
 .bg-dots {
