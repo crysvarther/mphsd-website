@@ -21,7 +21,7 @@ home_body = f'''
       <div class="reveal in">
         <p class="eyebrow" style="color:#ffd98a">Mitchell, South Dakota &middot; Since 1990</p>
         <h1>Plumbing &amp; Heating Done Right<span class="script">Fast. Reliable. Clean.</span></h1>
-        <p class="hero-sub">Your local, family-owned plumbing, heating &amp; cooling experts. From a dripping faucet to a new central A/C or Lochinvar boiler system &mdash; residential, commercial, and government &mdash; no job is too big or too small for Mitch&apos;s crew.</p>
+        <p class="hero-sub">Your local, family-owned plumbing and heating experts. From a dripping faucet to a full Lochinvar boiler system &mdash; residential, commercial, and government &mdash; no job is too big or too small for Mitch&apos;s crew.</p>
         <div class="hero-cta">
           <a class="btn btn--gold btn--lg" href="tel:{P}">{IC["phone"]} Call {PD}</a>
           <a class="btn btn--ghost btn--lg" href="contact.html" style="--btn-fg:#fff;background:rgba(255,255,255,.08)">Get a Free Estimate</a>
@@ -46,7 +46,7 @@ home_body = f'''
       <span class="pill">{IC["building"]} Commercial</span>
       <span class="pill">{IC["shield"]} Government</span>
       <span class="pill">{IC["thermo"]} Hydronic Heat</span>
-      <span class="pill">{IC["snow"]} Air Conditioning</span>
+      <span class="pill">{IC["snow"]} Commercial Chillers</span>
       <span class="pill">{IC["flame"]} Lochinvar Boilers</span>
       <span class="pill">{IC["clock"]} 24/7 Emergency</span>
     </div>
@@ -58,11 +58,11 @@ home_body = f'''
     <div class="text-center reveal">
       <p class="eyebrow">What We Do</p>
       <h2 class="section-title">One Call Does It All</h2>
-      <p class="lead">Whether it&apos;s a midnight pipe burst, an A/C that quit, or a brand-new heating &amp; cooling system, our Mitchell technicians show up on time and get it done clean.</p>
+      <p class="lead">Whether it&apos;s a midnight pipe burst, no heat on a cold night, or a brand-new radiant heating system, our Mitchell technicians show up on time and get it done clean.</p>
     </div>
     <div class="grid grid-3" style="margin-top:44px">
       {service_card("drop","Plumbing Service & Repair","Leaks, clogs, water heaters, fixtures, repipes, sewer and drain lines. Fast diagnosis and a clean fix &mdash; the first time.","plumbing.html","Explore Plumbing")}
-      {service_card("thermo","Heating & Cooling","Central air conditioning plus radiant and hydronic heating &mdash; installed, serviced, and repaired to keep you comfortable year-round.","heating.html","Explore Heating & Cooling","card--coral")}
+      {service_card("flame","Heating & Hydronics","Radiant in-floor heat and hydronic systems, powered by high-efficiency Lochinvar boilers &mdash; installed, serviced, and repaired to keep South Dakota winters outside.","heating.html","Explore Heating","card--coral")}
       {service_card("thermo","Lochinvar Boilers","We design, install, and service high-efficiency Lochinvar boiler systems built to last through decades of Dakota cold.","boilers.html","See Boiler Systems","card--gold")}
       {service_card("building","Commercial Plumbing","Restaurants, offices, retail, and multi-unit buildings. Code-compliant work that keeps your business running.","commercial.html","Commercial Work","card--blue")}
       {service_card("shield","Government & Municipal","Trusted partner for city, county, and public projects with the documentation and reliability the work demands.","commercial.html","Public Projects")}
@@ -82,7 +82,7 @@ home_body = f'''
             <ul class="story-timeline">
               <li class="tl-gold"><b>1990</b><span><strong>It all begins.</strong> A family opens Mitchell Plumbing &amp; Heating right here on N. Rowley Street.</span></li>
               <li class="tl-teal"><b>Grew</b><span>From small home repairs to major commercial &amp; government jobs &mdash; no job too big or small.</span></li>
-              <li class="tl-coral"><b>Today</b><span>Three decades on, your trusted plumbing, heating, cooling &amp; HVAC experts.</span></li>
+              <li class="tl-coral"><b>Today</b><span>Three decades on, your trusted plumbing, radiant heating &amp; Lochinvar boiler experts.</span></li>
             </ul>
           </div>
         </div>
@@ -90,7 +90,7 @@ home_body = f'''
       <div class="reveal">
         <p class="eyebrow">Your Hometown Pros</p>
         <h2 class="section-title">Local Since 1990 &mdash; <span class="script">and Proud of It</span></h2>
-        <p class="lead">Mitchell Plumbing &amp; Heating Co. Inc. is your local, family-owned and operated plumbing, heating and cooling business. Since our inception in {FOUNDED}, we&apos;ve provided Mitchell and Eastern South Dakota with quality installation and service &mdash; from large commercial projects to small residential needs.</p>
+        <p class="lead">Mitchell Plumbing &amp; Heating Co. Inc. is your local, family-owned and operated plumbing and heating business. Since our inception in {FOUNDED}, we&apos;ve provided Mitchell and Eastern South Dakota with quality installation and service &mdash; from large commercial projects to small residential needs.</p>
         <ul class="checks">
           <li>Real local technicians who answer the phone &mdash; never a call center</li>
           <li>Up-front communication and clean, respectful work in your home or jobsite</li>
@@ -164,8 +164,8 @@ about_body = f'''
       <div class="reveal">
         <p class="eyebrow">Our Story</p>
         <h2 class="section-title">A Hometown Name <span class="script">Since 1990</span></h2>
-        <p>Mitchell Plumbing &amp; Heating Co. Inc. is your local, family-owned and operated plumbing, heating and cooling business. Since its inception in {FOUNDED}, Mitchell Plumbing &amp; Heating has provided Mitchell and Eastern South Dakota with quality plumbing, heating, cooling, and radiant heating installation and service.</p>
-        <p>From large commercial projects to small residential needs, we&apos;ve always believed in doing the job right, treating people fairly, and standing behind our work. We want to thank Mitchell and the surrounding communities for trusting us with all their plumbing, heating, and cooling needs &mdash; we appreciate your business and look forward to serving you for years to come.</p>
+        <p>Mitchell Plumbing &amp; Heating Co. Inc. is your local, family-owned and operated plumbing and heating business. Since its inception in {FOUNDED}, Mitchell Plumbing &amp; Heating has provided Mitchell and Eastern South Dakota with quality plumbing, heating, and radiant heating installation and service.</p>
+        <p>From large commercial projects to small residential needs, we&apos;ve always believed in doing the job right, treating people fairly, and standing behind our work. We want to thank Mitchell and the surrounding communities for trusting us with all their plumbing and heating needs &mdash; we appreciate your business and look forward to serving you for years to come.</p>
         <div class="pill-row" style="margin-top:18px">
           <span class="pill">{IC["pin"]} {ADDR_ST}</span>
           <span class="pill">{IC["phone"]} {PD}</span>
@@ -220,13 +220,13 @@ about_body = f'''
 # SERVICES (hub)
 # ============================================================================
 services_body = f'''
-{page_hero("Our Services", "Complete plumbing, heating &amp; cooling solutions for homes, businesses, and public projects across the Mitchell, SD area.", "Anything plumbing, heating &amp; cooling")}
+{page_hero("Our Services", "Complete plumbing and heating solutions for homes, businesses, and public projects across the Mitchell, SD area.", "Anything plumbing &amp; heating")}
 <section class="section bg-dots">
   <div class="container">
     <div class="text-center reveal"><p class="eyebrow">Full-Service Contractor</p><h2 class="section-title">How Can Mitch Help?</h2><p class="lead">No job is too big or too small. Here&apos;s a look at what we do &mdash; click any service to learn more.</p></div>
     <div class="grid grid-3" style="margin-top:44px">
       {service_card("drop","Residential Plumbing","Faucets, toilets, water heaters, repipes, drain &amp; sewer cleaning, gas lines, and emergency repairs for your home.","plumbing.html","Plumbing Details")}
-      {service_card("thermo","Heating &amp; Cooling","Central air conditioning plus radiant and hydronic heating &mdash; year-round comfort for every season.","heating.html","Heating &amp; Cooling","card--coral")}
+      {service_card("flame","Heating &amp; Hydronics","Radiant in-floor heat and hydronic heating systems engineered for efficient, even South Dakota comfort.","heating.html","Heating &amp; Hydronics","card--coral")}
       {service_card("thermo","Lochinvar Boiler Systems","High-efficiency boiler design, installation, and service from a name built for cold climates.","boilers.html","Boiler Systems","card--gold")}
       {service_card("building","Commercial Plumbing","Reliable, code-compliant plumbing for restaurants, offices, retail, and multi-unit properties.","commercial.html","Commercial","card--blue")}
       {service_card("shield","Government &amp; Municipal","A documented, dependable partner for city, county, and public-sector work.","commercial.html","Public Projects")}
@@ -331,28 +331,28 @@ plumbing_body = (
 
 # HEATING / COOLING / HVAC
 heating_body = (
-  page_hero("Heating, Cooling &amp; HVAC", "Central air conditioning and radiant hydronic heating &mdash; complete comfort for Mitchell-area homes and businesses, all year long.", "Comfortable in every season")
-  + detail_intro("Full-Service Heating &amp; Cooling", "Comfort, Every Season", "warm winters, cool summers",
-      "Mitchell Plumbing &amp; Heating keeps you comfortable all year. We warm your home with efficient radiant and hydronic heating powered by high-efficiency Lochinvar boilers &mdash; and keep you cool with central air conditioning. One local call covers install, service, and repair.",
-      ["Central air conditioning &mdash; install, service &amp; repair",
-       "Radiant in-floor &amp; hydronic heating powered by Lochinvar boilers",
+  page_hero("Heating &amp; Hydronic Systems", "Radiant in-floor heat, hydronic systems, and high-efficiency Lochinvar boilers &mdash; cozy, efficient warmth for Mitchell-area homes and businesses all winter long.", "Warm floors, warm homes")
+  + detail_intro("Radiant &amp; Hydronic Heating", "Comfort From The Ground Up", "no more cold floors",
+      "Hydronic heating moves warm water through your home to deliver gentle, even heat with no drafts and no noise &mdash; and it&apos;s our specialty. Powered by high-efficiency Lochinvar boilers, it&apos;s one of the most comfortable, efficient ways to heat a South Dakota home or business.",
+      ["Radiant in-floor &amp; hydronic heating powered by Lochinvar boilers",
+       "Even, draft-free warmth &mdash; quiet, clean, and energy-efficient",
        "Residential &amp; commercial &mdash; new construction, replacement &amp; emergency"],
       "assets/img/mitch-quality-guaranteed.png", "Mitch the plumber mascot giving a thumbs up &mdash; Quality Work Guaranteed", "background:#fff", 470, 430)
-  + services_grid("Heating, Cooling &amp; HVAC Services", "What We Do", [
+  + services_grid("Heating Services", "What We Do", [
       ("flame","Radiant In-Floor Heat","Design and installation of cozy in-floor radiant systems for new builds and remodels.","card--coral"),
       ("thermo","Boilers &amp; Hydronics","Boiler-driven hot-water heating engineered and balanced for your space.","card--gold"),
-      ("snow","Central Air Conditioning","Beat the Dakota summer &mdash; A/C installation, replacement, and fast repair.","card--blue"),
+      ("leaf","High-Efficiency Upgrades","Replace aging equipment with modern, high-efficiency systems that lower your energy bills.","card--blue"),
       ("building","Snow-Melt Systems","Hydronic snow-melt for driveways, walks, and entrances &mdash; safer, ice-free winters.",""),
-      ("ac","Maintenance &amp; Tune-Ups","Keep your A/C, boilers, and heating systems running efficiently with seasonal service.",""),
-      ("shield","24/7 Emergency Service","No heat in a cold snap or no cool in a heat wave? We respond around the clock.","card--coral"),
+      ("tools","Maintenance &amp; Tune-Ups","Keep your boiler and heating system running efficiently with seasonal service and repairs.",""),
+      ("shield","24/7 Emergency Heat","No heat in a cold snap? We respond around the clock to get your warmth back.","card--coral"),
     ])
   + f'''
 <section class="section bg-navy">
   <div class="container">
-    <div class="text-center reveal"><p class="eyebrow">Comfort You Can Count On</p><h2 class="section-title">Warm Winters, Cool Summers</h2></div>
+    <div class="text-center reveal"><p class="eyebrow">Comfort You Can Count On</p><h2 class="section-title">The Comfortable Choice</h2></div>
     <div class="grid grid-3" style="margin-top:40px">
-      <div class="card text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["flame"]}</div><h3>Whole-Home Heating</h3><p>Radiant and hydronic heating, sized right for Dakota winters.</p></div>
-      <div class="card card--blue text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["snow"]}</div><h3>Cooling That Keeps Up</h3><p>Central air conditioning to keep your home or business comfortable all summer.</p></div>
+      <div class="card text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["flame"]}</div><h3>Even, Cozy Heat</h3><p>Warmth starts at the floor &mdash; no hot-and-cold spots, just steady comfort throughout.</p></div>
+      <div class="card card--coral text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["drop"]}</div><h3>Quiet &amp; Clean</h3><p>No blowing dust or noisy fans &mdash; just silent, healthy comfort in every room.</p></div>
       <div class="card card--gold text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["leaf"]}</div><h3>Efficient &amp; Reliable</h3><p>High-efficiency systems and seasonal tune-ups that lower bills and prevent breakdowns.</p></div>
     </div>
   </div>
@@ -413,19 +413,19 @@ boilers_body = (
 
 # COMMERCIAL
 commercial_body = (
-  page_hero("Commercial &amp; Government Plumbing &amp; HVAC", "A documented, dependable plumbing, heating &amp; cooling partner for businesses, builders, and public projects &mdash; any size, any sector.", "Big jobs, handled")
+  page_hero("Commercial &amp; Government Plumbing &amp; Heating", "A documented, dependable plumbing, heating &amp; mechanical partner for businesses, builders, and public projects &mdash; any size, any sector.", "Big jobs, handled")
   + detail_intro("Commercial &amp; Public Sector", "No Job Too Big", "or too small",
-      "From restaurants and retail to offices, multi-unit housing, and municipal facilities, we deliver code-compliant plumbing, heating, and cooling that keeps operations running. Builders and general contractors count on us as a trusted trade partner &mdash; on schedule, on spec, and on budget.",
+      "From restaurants and retail to offices, multi-unit housing, and municipal facilities, we deliver code-compliant plumbing, heating, and commercial chiller service that keeps operations running. Builders and general contractors count on us as a trusted trade partner &mdash; on schedule, on spec, and on budget.",
       ["Commercial, government, and new-construction experience",
        "Reliable scheduling and clear communication",
        "Documentation and professionalism public work demands"],
       "assets/img/mitch-on-time.png", "Mitch the plumber mascot with a wrench and calendar &mdash; On Time, Every Time", "background:#fff", 455, 430)
   + services_grid("Sectors We Serve", "Who We Work With", [
       ("building","Restaurants &amp; Retail","Grease lines, fixtures, water heaters, and fast service that protects your hours.",""),
-      ("users","Offices &amp; Multi-Unit","Reliable plumbing, heating, and cooling for office buildings, apartments, and condos.","card--coral"),
+      ("users","Offices &amp; Multi-Unit","Reliable plumbing and heating for office buildings, apartments, and condos.","card--coral"),
       ("shield","Government &amp; Municipal","Dependable, documented work for city, county, and public-sector projects.","card--gold"),
       ("tools","General Contractors","A trusted trade partner for custom homes, commercial builds, and remodels.","card--blue"),
-      ("snow","Commercial HVAC","Commercial air conditioning, rooftop cooling units, and boiler &amp; hydronic heating systems designed, installed &amp; maintained.",""),
+      ("snow","Commercial Chillers","Commercial chiller systems for cooling large facilities, plus boiler &amp; hydronic heating &mdash; designed, installed, serviced &amp; maintained.",""),
       ("clock","Service Contracts","Scheduled maintenance to keep your building&apos;s systems running year-round.","card--coral"),
     ])
   + f'''
@@ -527,11 +527,11 @@ FAQS = [
   ("What areas do you serve?",
    f"We&apos;re based in Mitchell, SD and serve communities across Eastern South Dakota, including {', '.join(AREAS[:8])} and the rest of Davison County and nearby areas. If you&apos;re not sure, just call {PD}."),
   ("Do you offer emergency service?",
-   "Yes &mdash; we offer 24/7 emergency plumbing, heating, and cooling service. Burst pipe, no heat in a cold snap, an A/C out in a heat wave, or a major leak? Call us anytime at " + PD + "."),
-  ("What kind of heating and cooling systems do you install?",
-   "We install, service, and repair central air conditioning, radiant in-floor and hydronic heating, and high-efficiency Lochinvar boiler systems for homes and businesses."),
-  ("Do you service air conditioning?",
-   "Yes. We install, replace, and repair central air conditioning for residential and commercial customers &mdash; and we offer seasonal A/C tune-ups to keep your system running efficiently all summer."),
+   "Yes &mdash; we offer 24/7 emergency plumbing and heating service. Burst pipe, no heat in a cold snap, a boiler down, or a major leak? Call us anytime at " + PD + "."),
+  ("What kind of heating systems do you install?",
+   "We install, service, and repair radiant in-floor and hydronic heating and high-efficiency Lochinvar boiler systems for homes and businesses."),
+  ("Do you do air conditioning or cooling?",
+   "We focus on plumbing and heating, so we don&apos;t install or service residential air conditioning. For commercial customers, we do install and service commercial chiller systems &mdash; give us a call to talk through your building&apos;s needs."),
   ("Why choose hydronic or radiant heating?",
    "Hydronic systems deliver even, draft-free warmth that&apos;s quiet, clean, and energy-efficient &mdash; ideal for South Dakota winters. They&apos;re great for whole homes, additions, shops, and garages."),
   ("Are you licensed and insured?",
@@ -601,7 +601,7 @@ contact_body = f'''
               <option>Plumbing repair or install</option>
               <option>Water heater</option>
               <option>Drain or sewer</option>
-              <option>Air conditioning / cooling</option>
+              <option>Commercial chiller / cooling</option>
               <option>Hydronic / radiant heating</option>
               <option>Lochinvar boiler</option>
               <option>Commercial or government project</option>
@@ -737,33 +737,32 @@ HOME = ("Home","index.html")
 # RENDER ALL
 # ============================================================================
 PAGES = [
- ("index.html", dict(title="Mitchell Plumbing & Heating | HVAC & Boilers in SD",
-    desc="Family-owned plumbing, heating & cooling in Mitchell, SD since 1990 — central A/C, hydronic heating, Lochinvar boilers & 24/7 service. Call (605) 996-7583.",
+ ("index.html", dict(title="Mitchell Plumbing & Heating | Boilers & Hydronic Heat, SD",
+    desc="Family-owned plumbing & heating in Mitchell, SD since 1990 — radiant & hydronic heating, Lochinvar boilers & 24/7 service. Call (605) 996-7583.",
     canonical="index.html", body=home_body, cta=True)),
  ("about.html", dict(title="About Us | Mitchell Plumbing & Heating — Local Since 1990",
-    desc="Meet Mitchell Plumbing & Heating: a family-owned plumbing, heating & cooling company serving Mitchell, SD since 1990. Meet Mitch and learn what we stand for.",
+    desc="Meet Mitchell Plumbing & Heating: a family-owned plumbing & heating company serving Mitchell, SD since 1990. Meet Mitch and learn what we stand for.",
     canonical="about.html", body=about_body, crumbs=cr(HOME,("About",None)))),
- ("services.html", dict(title="Plumbing, Heating & Cooling Services | Mitchell, SD",
-    desc="Plumbing, heating & cooling in Mitchell, SD — repairs, water heaters, drains, central A/C, hydronic heating, boilers & commercial work. Free estimates.",
+ ("services.html", dict(title="Plumbing & Heating Services | Mitchell, SD",
+    desc="Plumbing & heating in Mitchell, SD — repairs, water heaters, drains, radiant & hydronic heating, Lochinvar boilers & commercial work. Free estimates.",
     canonical="services.html", body=services_body, crumbs=cr(HOME,("Services",None)))),
  ("plumbing.html", dict(title="Plumbing Services in Mitchell, SD | Repairs & Drains",
     desc="Fast, clean plumbing in Mitchell, SD: leak repair, water heaters, drain & sewer cleaning, repipes & 24/7 emergencies. Call (605) 996-7583.",
     canonical="plumbing.html", body=plumbing_body, crumbs=cr(HOME,("Services","services.html"),("Plumbing",None)),
     schema=[{"@type":"Service","name":"Plumbing Services","serviceType":"Plumbing","provider":{"@id":SITE_URL+"/#business"},"areaServed":{"@type":"City","name":"Mitchell, SD"}}])),
- ("heating.html", dict(title="Heating, Cooling & HVAC in Mitchell, SD | A/C & Boilers",
-    desc="Full-service heating & cooling in Mitchell, SD: central A/C, radiant & hydronic heating & Lochinvar boilers — install, service & repair. Free estimates.",
-    canonical="heating.html", body=heating_body, crumbs=cr(HOME,("Services","services.html"),("Heating & Cooling",None)),
-    schema=[{"@type":"Service","name":"Heating, Cooling & HVAC","serviceType":"HVAC","provider":{"@id":SITE_URL+"/#business"},"areaServed":{"@type":"City","name":"Mitchell, SD"},
-             "hasOfferCatalog":{"@type":"OfferCatalog","name":"HVAC Services","itemListElement":[
-               {"@type":"Offer","itemOffered":{"@type":"Service","name":"Central Air Conditioning Installation & Repair"}},
-               {"@type":"Offer","itemOffered":{"@type":"Service","name":"Hydronic & Radiant Heating"}},
+ ("heating.html", dict(title="Heating & Hydronic Systems in Mitchell, SD | Boilers",
+    desc="Radiant & hydronic heating in Mitchell, SD: in-floor heat, hydronic systems & high-efficiency Lochinvar boilers — install, service & repair. Free estimates.",
+    canonical="heating.html", body=heating_body, crumbs=cr(HOME,("Services","services.html"),("Heating & Hydronics",None)),
+    schema=[{"@type":"Service","name":"Heating & Hydronic Systems","serviceType":"Heating","provider":{"@id":SITE_URL+"/#business"},"areaServed":{"@type":"City","name":"Mitchell, SD"},
+             "hasOfferCatalog":{"@type":"OfferCatalog","name":"Heating Services","itemListElement":[
+               {"@type":"Offer","itemOffered":{"@type":"Service","name":"Radiant & Hydronic Heating"}},
                {"@type":"Offer","itemOffered":{"@type":"Service","name":"Lochinvar Boiler Systems"}}]}}])),
  ("boilers.html", dict(title="Lochinvar Boiler Systems | Mitchell, SD",
     desc="High-efficiency Lochinvar boiler systems designed, installed & serviced in Mitchell, SD. Get a free estimate — call (605) 996-7583.",
     canonical="boilers.html", body=boilers_body, crumbs=cr(HOME,("Services","services.html"),("Lochinvar Boilers",None)),
     schema=[{"@type":"Service","name":"Lochinvar Boiler Installation & Service","serviceType":"Boiler installation","provider":{"@id":SITE_URL+"/#business"},"brand":"Lochinvar","areaServed":{"@type":"City","name":"Mitchell, SD"}}])),
- ("commercial.html", dict(title="Commercial & Government Plumbing & HVAC | Mitchell, SD",
-    desc="Commercial & government plumbing, heating & cooling in Mitchell, SD — code-compliant, dependable work for builders, businesses & public projects.",
+ ("commercial.html", dict(title="Commercial & Government Plumbing & Heating | Mitchell, SD",
+    desc="Commercial & government plumbing, heating & chiller service in Mitchell, SD — code-compliant, dependable work for builders, businesses & public projects.",
     canonical="commercial.html", body=commercial_body, crumbs=cr(HOME,("Services","services.html"),("Commercial & Government",None)),
     schema=[{"@type":"Service","name":"Commercial & Government Plumbing","serviceType":"Commercial plumbing","provider":{"@id":SITE_URL+"/#business"},"areaServed":{"@type":"City","name":"Mitchell, SD"}}])),
  ("service-area.html", dict(title="Service Area | Mitchell, SD & Surrounding Communities",
@@ -773,7 +772,7 @@ PAGES = [
     desc="See why builders and neighbors trust Mitchell Plumbing & Heating. Read testimonials from clients across the Mitchell, SD area and leave your own review.",
     canonical="reviews.html", body=reviews_body, crumbs=cr(HOME,("Reviews",None)))),
  ("faq.html", dict(title="FAQ | Mitchell Plumbing & Heating — Mitchell, SD",
-    desc="Answers about Mitchell Plumbing & Heating: services, service area, emergency response, A/C, hydronic heating, boilers & free estimates in Mitchell, SD.",
+    desc="Answers about Mitchell Plumbing & Heating: services, service area, emergency response, radiant & hydronic heating, boilers & free estimates in Mitchell, SD.",
     canonical="faq.html", body=faq_body, schema=faq_schema, crumbs=cr(HOME,("FAQ",None)))),
  ("contact.html", dict(title="Contact | Free Estimate | Mitchell Plumbing & Heating",
     desc="Contact Mitchell Plumbing & Heating for fast, friendly service and a free estimate. Call (605) 996-7583 — 24/7 emergency service — or request service online.",

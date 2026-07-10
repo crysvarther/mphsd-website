@@ -130,10 +130,10 @@ def business_node():
         "paymentAccepted": "Cash, Check, Credit Card",
         "foundingDate": FOUNDED,
         "slogan": SLOGAN,
-        "description": ("Family-owned plumbing, heating, cooling and HVAC contractor serving "
+        "description": ("Family-owned plumbing and heating contractor serving "
                         "Mitchell and Eastern South Dakota since 1990. "
-                        "Residential, commercial, and government work — central air conditioning "
-                        "and high-efficiency Lochinvar boiler & hydronic heating systems."),
+                        "Residential, commercial, and government work — high-efficiency Lochinvar "
+                        "boiler & hydronic heating systems, plus commercial chiller service."),
         "address": {"@type": "PostalAddress", "streetAddress": ADDR_ST, "addressLocality": ADDR_CITY,
                     "addressRegion": ADDR_STATE, "postalCode": ADDR_ZIP, "addressCountry": "US"},
         "geo": {"@type": "GeoCoordinates", "latitude": GEO_LAT, "longitude": GEO_LON},
@@ -145,13 +145,11 @@ def business_node():
             {"@type": "OpeningHoursSpecification",
              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
              "opens": "08:00", "closes": "17:00"}],
-        "knowsAbout": ["HVAC", "Central air conditioning", "Air conditioner installation & repair",
-                       "Ductwork",
-                       "Hydronic heating", "Radiant floor heating", "Lochinvar boilers",
+        "knowsAbout": ["Hydronic heating", "Radiant floor heating", "Lochinvar boilers",
                        "Boiler installation & repair", "Water heaters", "Tankless water heaters",
                        "Drain cleaning", "Sewer line service", "Fixture installation",
-                       "Commercial plumbing", "Commercial HVAC", "New construction plumbing",
-                       "Remodel plumbing"],
+                       "Commercial plumbing", "Commercial chillers", "Chiller installation & repair",
+                       "New construction plumbing", "Remodel plumbing"],
         "sameAs": SAME_AS,
         # NOTE: self-serving aggregateRating/review markup on your own LocalBusiness
         # is disregarded (and can be flagged) by Google. Testimonials remain visible
@@ -159,9 +157,8 @@ def business_node():
         "makesOffer": [
             {"@type": "Offer", "itemOffered": {"@type": "Service", "name": n}} for n in
             ["Residential Plumbing", "Commercial Plumbing", "Government & Municipal Plumbing",
-             "Central Air Conditioning", "Heating, Cooling & HVAC Service",
-             "Hydronic & Radiant Heating",
-             "Lochinvar Boiler Systems", "Water Heater Installation",
+             "Hydronic & Radiant Heating", "Lochinvar Boiler Systems",
+             "Commercial Chiller Service", "Water Heater Installation",
              "Drain & Sewer Service", "New Construction & Remodel Plumbing"]],
     }
 

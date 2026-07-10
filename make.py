@@ -14,7 +14,7 @@ NAV = [
     ("About", "about.html", None),
     ("Services", "services.html", [
         ("Plumbing", "plumbing.html"),
-        ("Heating & Cooling", "heating.html"),
+        ("Heating & Hydronics", "heating.html"),
         ("Lochinvar Boilers", "boilers.html"),
         ("Commercial & Government", "commercial.html"),
     ]),
@@ -111,7 +111,7 @@ def cta_band(prefix):
 <section class="cta-band">
   <div class="container">
     <p class="eyebrow" style="color:#ffe9b0">Ready When You Are</p>
-    <h2>Need Plumbing, Heating or Cooling in Mitchell?</h2>
+    <h2>Need a Plumbing or Heating Pro in Mitchell?</h2>
     <p style="font-size:1.15rem;max-width:60ch;margin:0 auto 1.2em">Talk to a real local technician &mdash; not a call center. Same-day service and 24/7 emergencies.</p>
     <a class="cta-phone" href="tel:{PHONE_TEL}">{IC["phone"]} {PHONE_DISP}</a>
     <div style="margin-top:22px"><a class="btn btn--gold btn--lg" href="{prefix}contact.html">Request a Free Estimate</a></div>
@@ -120,8 +120,8 @@ def cta_band(prefix):
 
 def footer(prefix):
     serv = "".join(f'<li><a href="{prefix}{h}">{l}</a></li>' for l, h in [
-        ("Residential Plumbing","plumbing.html"),("Heating & Cooling","heating.html"),
-        ("Air Conditioning","heating.html"),("Lochinvar Boilers","boilers.html"),
+        ("Residential Plumbing","plumbing.html"),("Heating & Hydronics","heating.html"),
+        ("Lochinvar Boilers","boilers.html"),("Commercial Chillers","commercial.html"),
         ("Commercial & Government","commercial.html"),("Drain & Sewer","plumbing.html")])
     comp = "".join(f'<li><a href="{prefix}{h}">{l}</a></li>' for l, h in [
         ("About Us","about.html"),("Service Area","service-area.html"),("Reviews","reviews.html"),
@@ -139,7 +139,7 @@ def footer(prefix):
             <span class="bn-sub">Plumbing <span class="bn-amp">&amp;</span> Heating</span>
           </span>
         </div>
-        <p style="color:#c5d2ee">Your local, family-owned plumbing, heating &amp; cooling team since {FOUNDED}. {SLOGAN}</p>
+        <p style="color:#c5d2ee">Your local, family-owned plumbing &amp; heating team since {FOUNDED}. {SLOGAN}</p>
         <p class="pill" style="margin-top:6px">{IC["shield"]} Licensed &middot; Insured &middot; Trusted</p>
       </div>
       <div><h4>Services</h4><ul class="footer-links">{serv}</ul></div>
