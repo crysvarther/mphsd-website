@@ -121,7 +121,7 @@ def cta_band(prefix):
 def footer(prefix):
     serv = "".join(f'<li><a href="{prefix}{h}">{l}</a></li>' for l, h in [
         ("Residential Plumbing","plumbing.html"),("Heating & Cooling","heating.html"),
-        ("Furnaces & HVAC","heating.html"),("Lochinvar Boilers","boilers.html"),
+        ("Air Conditioning","heating.html"),("Lochinvar Boilers","boilers.html"),
         ("Commercial & Government","commercial.html"),("Drain & Sewer","plumbing.html")])
     comp = "".join(f'<li><a href="{prefix}{h}">{l}</a></li>' for l, h in [
         ("About Us","about.html"),("Service Area","service-area.html"),("Reviews","reviews.html"),

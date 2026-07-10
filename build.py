@@ -132,8 +132,8 @@ def business_node():
         "slogan": SLOGAN,
         "description": ("Family-owned plumbing, heating, cooling and HVAC contractor serving "
                         "Mitchell and Eastern South Dakota since 1990. "
-                        "Residential, commercial, and government work — forced air furnaces, central "
-                        "air conditioning, and high-efficiency Lochinvar boiler & hydronic systems."),
+                        "Residential, commercial, and government work — central air conditioning "
+                        "and high-efficiency Lochinvar boiler & hydronic heating systems."),
         "address": {"@type": "PostalAddress", "streetAddress": ADDR_ST, "addressLocality": ADDR_CITY,
                     "addressRegion": ADDR_STATE, "postalCode": ADDR_ZIP, "addressCountry": "US"},
         "geo": {"@type": "GeoCoordinates", "latitude": GEO_LAT, "longitude": GEO_LON},
@@ -145,8 +145,8 @@ def business_node():
             {"@type": "OpeningHoursSpecification",
              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
              "opens": "08:00", "closes": "17:00"}],
-        "knowsAbout": ["HVAC", "Forced air furnaces", "Furnace installation & repair",
-                       "Central air conditioning", "Air conditioner installation & repair", "Ductwork",
+        "knowsAbout": ["HVAC", "Central air conditioning", "Air conditioner installation & repair",
+                       "Ductwork",
                        "Hydronic heating", "Radiant floor heating", "Lochinvar boilers",
                        "Boiler installation & repair", "Water heaters", "Tankless water heaters",
                        "Drain cleaning", "Sewer line service", "Fixture installation",
@@ -159,8 +159,8 @@ def business_node():
         "makesOffer": [
             {"@type": "Offer", "itemOffered": {"@type": "Service", "name": n}} for n in
             ["Residential Plumbing", "Commercial Plumbing", "Government & Municipal Plumbing",
-             "Forced Air Furnace Installation & Repair", "Central Air Conditioning",
-             "Heating, Cooling & HVAC Service", "Hydronic & Radiant Heating",
+             "Central Air Conditioning", "Heating, Cooling & HVAC Service",
+             "Hydronic & Radiant Heating",
              "Lochinvar Boiler Systems", "Water Heater Installation",
              "Drain & Sewer Service", "New Construction & Remodel Plumbing"]],
     }
