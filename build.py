@@ -149,7 +149,10 @@ def business_node():
                        "Boiler installation & repair", "Water heaters", "Tankless water heaters",
                        "Drain cleaning", "Sewer line service", "Fixture installation",
                        "Commercial plumbing", "Commercial chillers", "Chiller installation & repair",
-                       "New construction plumbing", "Remodel plumbing"],
+                       "New construction plumbing", "Remodel plumbing",
+                       "Moen fixtures", "Delta fixtures", "Kohler fixtures", "Gerber fixtures",
+                       "Sterling fixtures", "American Standard fixtures",
+                       "Onyx Collection showers", "Salo fiberglass tubs & showers"],
         "sameAs": SAME_AS,
         # NOTE: self-serving aggregateRating/review markup on your own LocalBusiness
         # is disregarded (and can be flagged) by Google. Testimonials remain visible

@@ -225,11 +225,13 @@ services_body = f'''
   <div class="container">
     <div class="text-center reveal"><p class="eyebrow">Full-Service Contractor</p><h2 class="section-title">How Can Mitch Help?</h2><p class="lead">No job is too big or too small. Here&apos;s a look at what we do &mdash; click any service to learn more.</p></div>
     <div class="grid grid-3" style="margin-top:44px">
-      {service_card("drop","Residential Plumbing","Faucets, toilets, water heaters, repipes, drain &amp; sewer cleaning, gas lines, and emergency repairs for your home.","plumbing.html","Plumbing Details")}
+      {service_card("heart","Residential Services","Plumbing, heating, remodels &mdash; and name-brand fixtures you pick from our vendor catalogs.","residential.html","Residential &amp; Product Lines")}
+      {service_card("drop","Plumbing Service &amp; Repair","Faucets, toilets, water heaters, repipes, drain &amp; sewer cleaning, gas lines, and emergency repairs.","plumbing.html","Plumbing Details","card--blue")}
       {service_card("flame","Heating &amp; Hydronics","Radiant in-floor heat and hydronic heating systems engineered for efficient, even South Dakota comfort.","heating.html","Heating &amp; Hydronics","card--coral")}
       {service_card("thermo","Lochinvar Boiler Systems","High-efficiency boiler design, installation, and service from a name built for cold climates.","boilers.html","Boiler Systems","card--gold")}
       {service_card("building","Commercial Plumbing","Reliable, code-compliant plumbing for restaurants, offices, retail, and multi-unit properties.","commercial.html","Commercial","card--blue")}
       {service_card("shield","Government &amp; Municipal","A documented, dependable partner for city, county, and public-sector work.","commercial.html","Public Projects")}
+      {service_card("snow","Commercial Chillers","Chiller systems for cooling large facilities &mdash; designed, installed, serviced &amp; maintained.","commercial.html","Chiller Service","card--blue")}
       {service_card("tools","New Construction &amp; Remodel","Builders&apos; trusted trade partner for custom homes, additions, and renovations.","plumbing.html","New Builds","card--coral")}
     </div>
   </div>
@@ -328,6 +330,87 @@ plumbing_body = (
       ("flame","Frozen or Burst Pipes","Dakota winters are tough &mdash; we thaw, repair, and prevent.","card--coral"),
     ], bg="bg-checker")
 )
+
+# RESIDENTIAL SERVICES + VENDOR PRODUCT LINES
+VENDORS = [
+    ("The Onyx Collection", "https://www.onyxcollection.com/",
+     "Custom shower bases, wall panels, and vanity tops built to order for your bathroom."),
+    ("Moen", "https://www.moen.com/",
+     "Faucets, showerheads, garbage disposals, and kitchen &amp; bath fixtures."),
+    ("Delta Faucet Outlet", "https://www.deltafaucet.com/outlet",
+     "Recertified and discounted Delta kitchen and bathroom products."),
+    ("Kohler", "https://www.kohler.com/",
+     "Kitchen and bathroom fixtures &mdash; sinks, faucets, toilets, tubs &amp; more."),
+    ("Gerber", "https://www.gerber-us.com/",
+     "Toilets, showers, sinks, and faucets for every home."),
+    ("Salo Manufacturing", "https://salomfg.com/",
+     "Fiberglass showers and tubs, manufactured since 1986."),
+    ("Sterling", "https://www.sterlingplumbing.com/",
+     "Durable showers, tubs, toilets and more from a Kohler company."),
+    ("American Standard", "https://www.americanstandard-us.com/",
+     "Bathroom and kitchen fixtures, faucets, sinks, toilets and accessories."),
+]
+vendor_cards = "".join(f'''<article class="card reveal">
+      <h3 style="color:var(--blue)">{name}</h3>
+      <p>{blurb}</p>
+      <a class="card-link" href="{url}" target="_blank" rel="nofollow noopener">Browse Catalog</a>
+    </article>''' for name, url, blurb in VENDORS)
+
+residential_body = f'''
+{page_hero("Residential Services", "Everything your home needs from one local crew &mdash; plumbing, heating, remodels, and name-brand fixtures you pick out yourself.", "Your home, done right")}
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <p class="eyebrow">For Your Home</p>
+        <h2 class="section-title">One Crew For <span class="script">the whole house</span></h2>
+        <p class="lead">From a dripping faucet to a full bathroom remodel or a new radiant heating system, Mitchell Plumbing &amp; Heating handles it all &mdash; installed by the same local, family-owned crew your neighbors have trusted since 1990.</p>
+        <ul class="checks">
+          <li><strong>Plumbing service &amp; repair</strong> &mdash; leaks, drains, water heaters, repipes</li>
+          <li><strong>Radiant &amp; hydronic heating</strong> &mdash; powered by Lochinvar boilers</li>
+          <li><strong>Fixtures &amp; remodels</strong> &mdash; sinks, tubs, showers, toilets &amp; faucets you choose</li>
+        </ul>
+        <div class="pill-row">
+          <a class="btn" href="contact.html">Get a Free Estimate</a>
+          <a class="btn btn--ghost" href="#product-lines">Browse Product Lines</a>
+        </div>
+      </div>
+      <div class="split-media reveal" style="display:flex;justify-content:center">
+        <img src="assets/img/mitch-thumb.png" alt="Mitch the plumber mascot giving a thumbs up for residential services" width="278" height="352" loading="lazy" style="background:var(--cream);padding:26px 22px;max-width:320px;width:100%;height:auto">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section bg-dots" id="product-lines">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="eyebrow">Pick What You Love</p>
+      <h2 class="section-title">Our Product Lines</h2>
+      <p class="lead center-block">We install trusted name brands &mdash; and you get to choose. Browse each vendor&apos;s catalog, jot down the products and model numbers you like, and we&apos;ll take it from there with a quote, ordering, and professional installation.</p>
+    </div>
+    <div class="grid grid-4" style="margin-top:42px">{vendor_cards}</div>
+  </div>
+</section>
+<section class="section bg-cream2">
+  <div class="container" style="max-width:900px">
+    <div class="text-center reveal"><p class="eyebrow">How It Works</p><h2 class="section-title">Three Easy Steps</h2></div>
+    <div class="grid grid-3" style="margin-top:38px">
+      <div class="card text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["doc"]}</div><h3>1. Browse</h3><p>Explore the catalogs above and find the fixtures and finishes you love.</p></div>
+      <div class="card card--coral text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["phone"]}</div><h3>2. Tell Mitch</h3><p>Call {PD} or <a href="contact.html">send us the list</a> &mdash; product names or model numbers work great.</p></div>
+      <div class="card card--gold text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["wrench"]}</div><h3>3. We Handle It</h3><p>We quote it, order it, and install it right &mdash; fast, reliable, and clean.</p></div>
+    </div>
+  </div>
+</section>
+'''
+residential_schema = [{
+  "@type": "Service", "name": "Residential Plumbing, Heating & Fixture Installation",
+  "serviceType": "Residential plumbing and heating",
+  "provider": {"@id": SITE_URL + "/#business"},
+  "areaServed": {"@type": "City", "name": "Mitchell, SD"},
+  "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Residential Product Lines",
+    "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Product",
+      "name": n, "brand": {"@type": "Brand", "name": n}}} for n, _, _ in VENDORS]}
+}]
 
 # HEATING / COOLING / HVAC
 heating_body = (
@@ -800,6 +883,10 @@ PAGES = [
     desc="Fast, clean plumbing in Mitchell, SD: leak repair, water heaters, drain & sewer cleaning, repipes & 24/7 emergencies. Call (605) 996-7583.",
     canonical="plumbing.html", body=plumbing_body, crumbs=cr(HOME,("Services","services.html"),("Plumbing",None)),
     schema=[{"@type":"Service","name":"Plumbing Services","serviceType":"Plumbing","provider":{"@id":SITE_URL+"/#business"},"areaServed":{"@type":"City","name":"Mitchell, SD"}}])),
+ ("residential.html", dict(title="Residential Services & Product Lines | Mitchell, SD",
+    desc="Residential plumbing, heating & fixtures in Mitchell, SD. Browse product lines from Moen, Delta, Kohler, Onyx, Gerber, Salo, Sterling & American Standard — we quote, order & install.",
+    canonical="residential.html", body=residential_body, schema=residential_schema,
+    crumbs=cr(HOME,("Services","services.html"),("Residential Services",None)))),
  ("heating.html", dict(title="Heating & Hydronic Systems in Mitchell, SD | Boilers",
     desc="Radiant & hydronic heating in Mitchell, SD: in-floor heat, hydronic systems & high-efficiency Lochinvar boilers — install, service & repair. Free estimates.",
     canonical="heating.html", body=heating_body, crumbs=cr(HOME,("Services","services.html"),("Heating & Hydronics",None)),
