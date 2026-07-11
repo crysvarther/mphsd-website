@@ -77,7 +77,7 @@
         if (btn) { btn.disabled = false; btn.textContent = "Send My Request"; }
         if (status) {
           status.style.color = "var(--teal-deep)";
-          status.textContent = "Thanks! Mitch got your request — we'll be in touch within one business day. For emergencies, call (605) 996-7583.";
+          status.textContent = "Thanks! Mitch got your request — we'll be in touch within one business day. Need us sooner? Call (605) 996-7583.";
         }
       }, 700);
     });

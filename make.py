@@ -82,7 +82,7 @@ def header(prefix):
   <div class="topbar"><div class="container">
     <span>{IC["pin"]} {ADDR_ST}, {ADDR_CITY}, {ADDR_STATE}</span>
     <span class="sep">|</span>
-    <span>{IC["clock"]} Mon&ndash;Fri 8&ndash;5 &middot; <strong>24/7 Emergency</strong></span>
+    <span>{IC["clock"]} Mon&ndash;Fri 8&ndash;5</span>
     <span class="sep">|</span>
     <span>{IC["phone"]} <a href="tel:{PHONE_TEL}">{PHONE_DISP}</a></span>
   </div></div>
@@ -113,7 +113,7 @@ def cta_band(prefix):
   <div class="container">
     <p class="eyebrow" style="color:#ffe9b0">Ready When You Are</p>
     <h2>Need a Plumbing or Heating Pro in Mitchell?</h2>
-    <p style="font-size:1.15rem;max-width:60ch;margin:0 auto 1.2em">Talk to a real local technician &mdash; not a call center. Same-day service and 24/7 emergencies.</p>
+    <p style="font-size:1.15rem;max-width:60ch;margin:0 auto 1.2em">Talk to a real local technician &mdash; not a call center. Fast, friendly service from right here in Mitchell.</p>
     <a class="cta-phone" href="tel:{PHONE_TEL}">{IC["phone"]} {PHONE_DISP}</a>
     <div style="margin-top:22px"><a class="btn btn--gold btn--lg" href="{prefix}contact.html">Request a Free Estimate</a></div>
   </div>
@@ -153,7 +153,7 @@ def footer(prefix):
           <li>{IC["phone"]} <a href="tel:{PHONE_TEL}"><strong>{PHONE_DISP}</strong></a></li>
           <li>{IC["mail"]} <a href="mailto:{EMAIL}">{EMAIL}</a></li>
           <li>{IC["pin"]} {ADDR_ST}<br><span style="padding-left:28px">{ADDR_CITY}, {ADDR_STATE} {ADDR_ZIP}</span></li>
-          <li>{IC["clock"]} Mon&ndash;Fri 8am&ndash;5pm<br><span style="padding-left:28px">24/7 Emergency Service</span></li>
+          <li>{IC["clock"]} Mon&ndash;Fri 8am&ndash;5pm</li>
         </ul>
         <div class="footer-soc" style="margin-top:8px">
           <a href="{GBP_URL or 'https://www.google.com/search?q=Mitchell+Plumbing+and+Heating+Mitchell+SD'}" aria-label="Find us on Google" title="Google">{IC["google"]}</a>
