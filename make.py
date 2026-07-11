@@ -125,7 +125,8 @@ def footer(prefix):
         ("Commercial & Government","commercial.html"),("Drain & Sewer","plumbing.html")])
     comp = "".join(f'<li><a href="{prefix}{h}">{l}</a></li>' for l, h in [
         ("About Us","about.html"),("Service Area","service-area.html"),("Reviews","reviews.html"),
-        ("FAQ","faq.html"),("Blog","blog/index.html"),("Contact","contact.html")])
+        ("FAQ","faq.html"),("Blog","blog/index.html"),("Careers","careers.html"),
+        ("Contact","contact.html")])
     areas = " &middot; ".join(AREAS[:10])
     return f'''
 <footer class="site-footer">

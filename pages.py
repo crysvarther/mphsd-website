@@ -626,6 +626,56 @@ contact_schema = [{
 }]
 
 # ============================================================================
+# CAREERS
+# ============================================================================
+careers_body = f'''
+{page_hero("Careers", "Build a career in the trades with a family-owned crew that&apos;s been part of Mitchell since 1990.", "Come work with Mitch")}
+<section class="section bg-dots">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <p class="eyebrow">Join Mitch&apos;s Crew</p>
+        <h2 class="section-title">Good Work. <span class="script">Good people.</span></h2>
+        <p class="lead">Plumbing and heating is honest, skilled work that every community needs &mdash; and at Mitchell Plumbing &amp; Heating, it comes with a team that treats you like family. We&apos;ve served Mitchell and Eastern South Dakota since 1990, and we&apos;re proud of the crew that makes it happen.</p>
+        <ul class="checks">
+          <li><strong>Learn a real trade.</strong> Work alongside experienced plumbing &amp; heating pros.</li>
+          <li><strong>Serve your neighbors.</strong> Local work in Mitchell and the surrounding communities.</li>
+          <li><strong>Family-owned values.</strong> Do the job right, treat people fairly, stand behind your work.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">{IC["wrench"]} Plumbing</span>
+          <span class="pill">{IC["flame"]} Heating &amp; Hydronics</span>
+          <span class="pill">{IC["users"]} Apprentice-Friendly</span>
+        </div>
+      </div>
+      <div class="split-media reveal" style="display:flex;justify-content:center">
+        <img src="assets/img/mitch-thumb.png" alt="Mitch the plumber mascot giving a thumbs up &mdash; join the Mitchell Plumbing &amp; Heating team" width="278" height="352" loading="lazy" style="background:var(--cream);padding:26px 22px;max-width:320px;width:100%;height:auto">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section bg-cream2">
+  <div class="container" style="max-width:900px">
+    <div class="text-center reveal">
+      <p class="eyebrow">Interested?</p>
+      <h2 class="section-title">How To Apply</h2>
+      <p class="lead center-block">We don&apos;t have any openings posted right now &mdash; but we&apos;re always glad to meet skilled, dependable people. Introduce yourself and we&apos;ll keep you in mind.</p>
+    </div>
+    <div class="grid grid-3" style="margin-top:38px">
+      <div class="card text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["mail"]}</div><h3>Email Us</h3><p>Send a note about yourself and your experience to<br><a href="mailto:{EMAIL}?subject=Careers%20at%20Mitchell%20Plumbing%20%26%20Heating"><strong>{EMAIL}</strong></a></p></div>
+      <div class="card card--coral text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["phone"]}</div><h3>Call Us</h3><p>Talk to a real person about working here.<br><a href="tel:{P}"><strong>{PD}</strong></a></p></div>
+      <div class="card card--gold text-center reveal"><div class="card-icon" style="margin-inline:auto">{IC["pin"]}</div><h3>Stop By</h3><p>Come say hello at the shop.<br><strong>{ADDR_ST}, {ADDR_CITY}, {ADDR_STATE} {ADDR_ZIP}</strong></p></div>
+    </div>
+  </div>
+</section>
+'''
+careers_schema = [{
+  "@type": "WebPage", "@id": SITE_URL + "/careers.html",
+  "name": "Careers at " + BIZ_NAME, "url": SITE_URL + "/careers.html",
+  "description": "Career opportunities in plumbing and heating with Mitchell Plumbing & Heating in Mitchell, SD."
+}]
+
+# ============================================================================
 # BLOG INDEX + first post
 # ============================================================================
 POSTS = [
@@ -777,6 +827,9 @@ PAGES = [
  ("contact.html", dict(title="Contact | Free Estimate | Mitchell Plumbing & Heating",
     desc="Contact Mitchell Plumbing & Heating for fast, friendly service and a free estimate. Call (605) 996-7583 — 24/7 emergency service — or request service online.",
     canonical="contact.html", body=contact_body, schema=contact_schema, crumbs=cr(HOME,("Contact",None)))),
+ ("careers.html", dict(title="Careers | Mitchell Plumbing & Heating — Mitchell, SD",
+    desc="Interested in a plumbing or heating career in Mitchell, SD? Meet Mitchell Plumbing & Heating — a family-owned crew serving Eastern South Dakota since 1990.",
+    canonical="careers.html", body=careers_body, schema=careers_schema, crumbs=cr(HOME,("Careers",None)))),
  ("thank-you.html", dict(title="Thank You | Mitchell Plumbing & Heating",
     desc="Thanks for contacting Mitchell Plumbing & Heating. We'll be in touch within one business day. For emergencies call (605) 996-7583.",
     canonical="thank-you.html", body=thankyou_body, cta=False, robots="noindex, follow")),
