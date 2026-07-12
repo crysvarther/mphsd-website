@@ -3,7 +3,9 @@
 import os, json
 from build import (SITE_URL, BIZ_NAME, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST, ADDR_CITY,
                    ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON, AREAS, COUNTIES,
-                   TESTIMONIAL, TESTIMONIAL2, IC)
+                   TESTIMONIAL, TESTIMONIAL2, IC,
+                   HIRING_BANNER_ON, HIRING_BANNER_TEXT, HIRING_BANNER_CTA,
+                   HIRING_BANNER_LINK)
 from make import render, page_hero, service_card
 
 P = PHONE_TEL
@@ -13,7 +15,16 @@ TEL = f'<a href="tel:{P}">{PD}</a>'
 # ============================================================================
 # HOME
 # ============================================================================
-home_body = f'''
+hiring_banner = f'''
+<div class="hiring-banner">
+  <div class="container">
+    <span class="hb-tag">Now Hiring</span>
+    <span class="hb-text">{HIRING_BANNER_TEXT}</span>
+    <a class="hb-link" href="{HIRING_BANNER_LINK}">{HIRING_BANNER_CTA} &rarr;</a>
+  </div>
+</div>''' if HIRING_BANNER_ON else ''
+
+home_body = hiring_banner + f'''
 <section class="hero">
   <div class="container">
     <div class="starburst"><span><small>Est.</small><b>1990</b><small>Mitchell SD</small></span></div>

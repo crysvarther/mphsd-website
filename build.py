@@ -25,6 +25,17 @@ FOUNDED    = "1990"
 GEO_LAT    = 43.7094
 GEO_LON    = -98.0298
 
+# ----------------------------------------------------------------------------
+# "Now Hiring" banner (shows at the top of the homepage).
+#   Turn it on/off:  set HIRING_BANNER_ON to True or False
+#   Change wording:  edit the TEXT / CTA lines below
+#   Then re-run:     python pages.py
+# ----------------------------------------------------------------------------
+HIRING_BANNER_ON   = True
+HIRING_BANNER_TEXT = "We're growing! Join the Mitchell Plumbing & Heating crew."
+HIRING_BANNER_CTA  = "See Open Positions"
+HIRING_BANNER_LINK = "careers.html"
+
 # Off-site profiles. Paste real URLs here to (1) populate schema.org `sameAs`
 # entity links and (2) activate the footer social icons. Leave "" to disable.
 GBP_URL      = ""   # Google Business Profile (e.g. https://g.page/r/...) — none yet
