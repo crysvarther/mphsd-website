@@ -89,7 +89,7 @@ home_body = hiring_banner + f'''
         <div class="story-card">
           <span class="story-tag">Our Story</span>
           <div class="story-inner">
-            <img class="story-mitch" src="assets/img/mitch-story.png" alt="Mitch the plumber pointing to the Mitchell Plumbing &amp; Heating company timeline" width="310" height="339" loading="lazy">
+            <img class="story-mitch" src="assets/img/mitch-story.png" alt="Mitch the plumber pointing to the Mitchell Plumbing &amp; Heating company timeline" width="310" height="344" loading="lazy">
             <ul class="story-timeline">
               <li class="tl-gold"><b>1990</b><span><strong>It all begins.</strong> A family opens Mitchell Plumbing &amp; Heating right here on N. Rowley Street.</span></li>
               <li class="tl-teal"><b>Grew</b><span>From small home repairs to major commercial &amp; government jobs &mdash; no job too big or small.</span></li>
@@ -276,7 +276,7 @@ services_body = f'''
             <text class="g-title" x="200" y="249" text-anchor="middle" font-size="37">TO YOU</text>
             <text class="g-est" x="200" y="281" text-anchor="middle" font-size="17">★ SINCE 1990 ★</text>
           </svg>
-          <img class="g-mitch" src="assets/img/mitch-thumb.png" alt="Mitch the plumber giving a thumbs up" width="278" height="352" loading="lazy">
+          <img class="g-mitch" src="assets/img/mitch-thumb.png" alt="Mitch the plumber giving a thumbs up" width="300" height="360" loading="lazy">
         </div>
       </div>
     </div>
@@ -325,7 +325,7 @@ plumbing_body = (
       ["Fast, responsive local service",
        "Up-front pricing approved before we start",
        "Workmanship that lasts &mdash; backed by 35+ years"],
-      "assets/img/mitch-trusted-plumber.png", "Mitch the plumber mascot &mdash; Your Trusted Plumber", "background:#fff", 445, 410)
+      "assets/img/mitch-trusted-plumber.png", "Mitch the plumber mascot flexing &mdash; Expert Technicians", "background:#fff", 410, 405)
   + services_grid("Plumbing Services We Offer", "What We Fix &amp; Install", [
       ("drop","Leak Detection &amp; Repair","Hidden leaks, dripping faucets, running toilets, and pipe repairs &mdash; found fast and fixed clean.","" ),
       ("flame","Water Heaters","Repair and installation of tank and tankless water heaters sized right for your home or business.","card--coral"),
@@ -386,7 +386,7 @@ residential_body = f'''
         </div>
       </div>
       <div class="split-media reveal" style="display:flex;justify-content:center">
-        <img src="assets/img/mitch-thumb.png" alt="Mitch the plumber mascot giving a thumbs up for residential services" width="278" height="352" loading="lazy" style="background:var(--cream);padding:26px 22px;max-width:320px;width:100%;height:auto">
+        <img src="assets/img/mitch-thumb.png" alt="Mitch the plumber mascot giving a thumbs up for residential services" width="300" height="360" loading="lazy" style="background:var(--cream);padding:26px 22px;max-width:320px;width:100%;height:auto">
       </div>
     </div>
   </div>
@@ -430,7 +430,7 @@ heating_body = (
       ["Radiant in-floor &amp; hydronic heating powered by Lochinvar boilers",
        "Even, draft-free warmth &mdash; quiet, clean, and energy-efficient",
        "Residential &amp; commercial &mdash; new construction &amp; replacement"],
-      "assets/img/mitch-quality-guaranteed.png", "Mitch the plumber mascot giving a thumbs up &mdash; Quality Work Guaranteed", "background:#fff", 470, 430)
+      "assets/img/mitch-quality-guaranteed.png", "Mitch the plumber mascot giving a thumbs up &mdash; Quality Work Guaranteed", "background:#fff", 450, 430)
   + services_grid("Heating Services", "What We Do", [
       ("flame","Radiant In-Floor Heat","Design and installation of cozy in-floor radiant systems for new builds and remodels.","card--coral"),
       ("thermo","Boilers &amp; Hydronics","Boiler-driven hot-water heating engineered and balanced for your space.","card--gold"),
@@ -512,7 +512,7 @@ commercial_body = (
       ["Commercial, government, and new-construction experience",
        "Reliable scheduling and clear communication",
        "Documentation and professionalism public work demands"],
-      "assets/img/mitch-on-time.png", "Mitch the plumber mascot with a wrench and calendar &mdash; On Time, Every Time", "background:#fff", 455, 430)
+      "assets/img/mitch-on-time.png", "Mitch the plumber mascot with a wrench and calendar &mdash; On Time, Every Time", "background:#fff", 430, 425)
   + services_grid("Sectors We Serve", "Who We Work With", [
       ("building","Restaurants &amp; Retail","Grease lines, fixtures, water heaters, and fast service that protects your hours.",""),
       ("users","Offices &amp; Multi-Unit","Reliable plumbing and heating for office buildings, apartments, and condos.","card--coral"),
@@ -739,7 +739,7 @@ careers_body = f'''
         </div>
       </div>
       <div class="split-media reveal" style="display:flex;justify-content:center">
-        <img src="assets/img/mitch-thumb.png" alt="Mitch the plumber mascot giving a thumbs up &mdash; join the Mitchell Plumbing &amp; Heating team" width="278" height="352" loading="lazy" style="background:var(--cream);padding:26px 22px;max-width:320px;width:100%;height:auto">
+        <img src="assets/img/mitch-thumb.png" alt="Mitch the plumber mascot giving a thumbs up &mdash; join the Mitchell Plumbing &amp; Heating team" width="300" height="360" loading="lazy" style="background:var(--cream);padding:26px 22px;max-width:320px;width:100%;height:auto">
       </div>
     </div>
   </div>
