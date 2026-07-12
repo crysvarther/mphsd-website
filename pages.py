@@ -679,7 +679,7 @@ contact_body = f'''
       </div>
       <div class="reveal">
         <form class="form-card" data-quote-form action="#" method="post" novalidate>
-          <h2 data-form-title style="font-family:var(--font-head);text-transform:uppercase;margin-bottom:4px">Request a Free Estimate</h2>
+          <h2 style="font-family:var(--font-head);text-transform:uppercase;margin-bottom:4px">How Can We Help?</h2>
           <p class="form-note" style="margin-bottom:18px">Fill this out and Mitch will get right back to you. <span class="req">*</span> required.</p>
           <div class="field"><label for="purpose">What do you need? <span class="req">*</span></label>
             <select id="purpose" name="purpose" required>
@@ -693,7 +693,7 @@ contact_body = f'''
             <div class="field"><label for="phone">Phone <span class="req">*</span></label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div>
           </div>
           <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"></div>
-          <div class="field"><label for="service">How can we help?</label>
+          <div class="field"><label for="service">What&apos;s this about?</label>
             <select id="service" name="service">
               <option value="">Choose one&hellip;</option>
               <option>Plumbing project or install</option>

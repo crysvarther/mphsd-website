@@ -68,7 +68,6 @@
     /* Multi-purpose form: swap "How can we help?" options per request type */
     var PURPOSES = {
       estimate: {
-        title: "Request a Free Estimate",
         placeholder: "Tell us about your project, your address or town, and the best time to reach you.",
         options: ["Plumbing project or install", "Water heater replacement",
                   "Hydronic / radiant heating", "Lochinvar boiler system",
@@ -77,7 +76,6 @@
                   "Something else"]
       },
       service: {
-        title: "Service Request",
         placeholder: "Tell us what's going on, your address or town, and the best time to reach you.",
         options: ["Leak repair", "Clogged drain or sewer",
                   "Water heater problem / no hot water", "Boiler or heating problem / no heat",
@@ -85,7 +83,6 @@
                   "Maintenance or tune-up", "Something else"]
       },
       account: {
-        title: "Account Question",
         placeholder: "Tell us about your question and the name or address on the account.",
         options: ["Billing or invoice question", "Payment question",
                   "Scheduling or appointment question", "Question about completed work",
@@ -94,10 +91,8 @@
     };
     var purposeSel = form.querySelector("#purpose");
     var serviceSel = form.querySelector("#service");
-    var formTitle = form.querySelector("[data-form-title]");
     function applyPurpose() {
       var p = PURPOSES[purposeSel.value] || PURPOSES.estimate;
-      if (formTitle) formTitle.textContent = p.title;
       var msg = form.querySelector("#message");
       if (msg) msg.setAttribute("placeholder", p.placeholder);
       serviceSel.innerHTML = "";
