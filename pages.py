@@ -3,7 +3,7 @@
 import os, json
 from build import (SITE_URL, BIZ_NAME, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST, ADDR_CITY,
                    ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON, AREAS, COUNTIES,
-                   TESTIMONIAL, TESTIMONIAL2, IC,
+                   TESTIMONIAL, TESTIMONIAL2, IC, FORMSPREE_ID,
                    HIRING_BANNER_ON, HIRING_BANNER_TEXT, HIRING_BANNER_CTA,
                    HIRING_BANNER_LINK)
 from make import render, page_hero, service_card
@@ -658,6 +658,7 @@ faq_schema = [{
 # ============================================================================
 # CONTACT
 # ============================================================================
+FORM_ENDPOINT = f"https://formspree.io/f/{FORMSPREE_ID}" if FORMSPREE_ID else ""
 contact_body = f'''
 {page_hero("Contact Us", "Ready to get started? Reach out for fast, friendly service and a free estimate.", "Let&apos;s get it fixed")}
 <section class="section bg-dots">
@@ -678,7 +679,8 @@ contact_body = f'''
         </div>
       </div>
       <div class="reveal">
-        <form class="form-card" data-quote-form action="#" method="post" novalidate>
+        <form class="form-card" data-quote-form action="{FORM_ENDPOINT or '#'}" data-endpoint="{FORM_ENDPOINT}" method="post" novalidate>
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <h2 style="font-family:var(--font-head);text-transform:uppercase;margin-bottom:4px">How Can We Help?</h2>
           <p class="form-note" style="margin-bottom:18px">Fill this out and Mitch will get right back to you. <span class="req">*</span> required.</p>
           <div class="field"><label for="purpose">What do you need? <span class="req">*</span></label>

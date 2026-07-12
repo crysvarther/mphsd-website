@@ -115,15 +115,26 @@
       if (!form.checkValidity()) { form.reportValidity(); return; }
       var btn = form.querySelector('button[type="submit"]');
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
-      // Demo: simulate submit. Wire to a real endpoint (Formspree/Netlify/your CRM) on launch.
-      setTimeout(function () {
-        form.reset();
+      var done = function (ok) {
         if (btn) { btn.disabled = false; btn.textContent = "Send My Request"; }
-        if (status) {
+        if (ok) form.reset();
+        if (!status) return;
+        if (ok) {
           status.style.color = "var(--teal-deep)";
           status.textContent = "Thanks! Mitch got your request — we'll be in touch within one business day. Need us sooner? Call (605) 996-7583.";
+        } else {
+          status.style.color = "var(--coral-deep)";
+          status.textContent = "Sorry — something went wrong sending your request. Please give us a call at (605) 996-7583 and we'll take care of you.";
         }
-      }, 700);
+      };
+      var endpoint = form.getAttribute("data-endpoint");
+      if (!endpoint) { setTimeout(function () { done(true); }, 700); return; } // demo mode until FORMSPREE_ID is set in build.py
+      var data = new FormData(form);
+      var pLabel = purposeSel ? purposeSel.options[purposeSel.selectedIndex].textContent : "Website Request";
+      data.set("_subject", "mphsd.com — " + pLabel + (data.get("name") ? " from " + data.get("name") : ""));
+      fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
+        .then(function (r) { done(r.ok); })
+        .catch(function () { done(false); });
     });
   }
 })();

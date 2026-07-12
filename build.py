@@ -36,6 +36,16 @@ HIRING_BANNER_TEXT = "We're growing! Join the Mitchell Plumbing & Heating crew."
 HIRING_BANNER_CTA  = "See Open Positions"
 HIRING_BANNER_LINK = "careers.html"
 
+# ----------------------------------------------------------------------------
+# Contact form email delivery (Formspree).
+#   1. Sign up at https://formspree.io and create a form pointed at your inbox
+#   2. Copy the 8-character ID from the endpoint it gives you
+#      (https://formspree.io/f/XXXXXXXX -> paste just the XXXXXXXX part)
+#   3. Re-run: python pages.py, then commit & push
+# Leave "" for demo mode: the form shows a success message but sends nothing.
+# ----------------------------------------------------------------------------
+FORMSPREE_ID = ""
+
 # Off-site profiles. Paste real URLs here to (1) populate schema.org `sameAs`
 # entity links and (2) activate the footer social icons. Leave "" to disable.
 GBP_URL      = ""   # Google Business Profile (e.g. https://g.page/r/...) — none yet

@@ -176,7 +176,7 @@ def floating(prefix):
   <a class="cb-quote" href="{prefix}contact.html">{IC["wrench"]} Free Estimate</a>
 </div>
 <button class="back-to-top" aria-label="Back to top">{IC["arrow-up"]}</button>
-<script src="{prefix}js/main.js?v=3" defer></script>
+<script src="{prefix}js/main.js?v=4" defer></script>
 </body>
 </html>'''
 
