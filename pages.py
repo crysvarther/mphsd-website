@@ -710,6 +710,7 @@ contact_body = f'''
             </select>
           </div>
           <div class="field"><label for="message">Details</label><textarea id="message" name="message" placeholder="Tell us what&apos;s going on, your address or town, and the best time to reach you."></textarea></div>
+          <p class="form-note" style="margin-bottom:14px">Have photos of the problem? Text them to <a href="sms:+16059332095"><strong>(605) 933-2095</strong></a> &mdash; it helps us quote faster.</p>
           <button class="btn btn--lg" type="submit" style="width:100%">Send My Request</button>
           <p class="form-status" role="status" aria-live="polite"></p>
           <p class="form-note" style="margin-top:10px">Prefer to talk? Call <a href="tel:{P}"><strong>{PD}</strong></a> &mdash; a real local technician will answer.</p>

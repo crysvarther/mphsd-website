@@ -121,7 +121,7 @@
         if (!status) return;
         if (ok) {
           status.style.color = "var(--teal-deep)";
-          status.textContent = "Thanks! Mitch got your request — we'll be in touch within one business day. Need us sooner? Call (605) 996-7583.";
+          status.textContent = "Thanks! Mitch got your request — we'll be in touch within one business day. Have photos of the problem? Text them to (605) 933-2095. Need us sooner? Call (605) 996-7583.";
         } else {
           status.style.color = "var(--coral-deep)";
           status.textContent = "Sorry — something went wrong sending your request. Please give us a call at (605) 996-7583 and we'll take care of you.";
