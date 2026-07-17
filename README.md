@@ -32,7 +32,8 @@ site/
 ├── css/style.css           The whole retro design system
 ├── js/main.js              Nav, accordion, scroll reveal, form, etc.
 ├── assets/img/             Logo, Mitch mascot art, building photo, favicon
-└── build.py / make.py / pages.py   Page generator (see below)
+├── build.py / make.py / pages.py   Page generator (see below)
+└── ANALYTICS.md            Metrics/KPI setup guide (GA4, Search Console, dashboard)
 ```
 
 ## Editing content
@@ -67,7 +68,9 @@ testimonial lives at the top of `build.py`. Change it once, re-run, done.
    Business Profile, Facebook, etc. — this strengthens SEO/AEO. Update the footer Facebook link.
 4. **Verify business hours** in `build.py` (`openingHoursSpecification`) — currently Mon–Fri
    8–5 with 24/7 emergency noted in copy.
-5. **Submit `sitemap.xml`** to Google Search Console and Bing Webmaster Tools.
+5. **Turn on analytics.** Paste your GA4 measurement ID and Search Console token into
+   `build.py` and re-run — phone-call, form-lead, and traffic tracking are already wired
+   in. Full walkthrough (incl. sitemap submission + Looker Studio dashboard): **`ANALYTICS.md`**.
 6. (Optional) Generate PNG favicons / a 512×512 maskable icon if you want richer PWA install
    art; `favicon.svg` and the logo already cover modern browsers.
 

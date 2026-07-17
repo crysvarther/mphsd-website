@@ -4,7 +4,15 @@ import os
 from build import (SITE_URL, BIZ_NAME, BIZ_ALT, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST,
                    ADDR_CITY, ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON,
                    AREAS, COUNTIES, TESTIMONIAL, IC, jsonld, breadcrumb_node,
-                   GBP_URL, FACEBOOK_URL)
+                   GBP_URL, FACEBOOK_URL, GA4_ID, GSC_VERIFICATION)
+
+# Emitted only when the IDs are set in build.py — otherwise pages stay 100% tracker-free.
+GSC_META = (f'\n<meta name="google-site-verification" content="{GSC_VERIFICATION}">'
+            if GSC_VERIFICATION else "")
+GA_SNIPPET = (f'''
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}
+gtag('js',new Date());gtag('config','{GA4_ID}');</script>''' if GA4_ID else "")
 
 # ----------------------------------------------------------------------------
 # Navigation
@@ -37,7 +45,7 @@ def head(title, desc, canonical, prefix, extra_schema=None, og_image="assets/img
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{full_canon}">
-<meta name="robots" content="{robots}">
+<meta name="robots" content="{robots}">{GSC_META}
 <meta name="author" content="{BIZ_NAME}">
 <meta name="geo.region" content="US-SD">
 <meta name="geo.placename" content="Mitchell, South Dakota">
@@ -61,7 +69,7 @@ def head(title, desc, canonical, prefix, extra_schema=None, og_image="assets/img
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{prefix}css/style.css">
+<link rel="stylesheet" href="{prefix}css/style.css">{GA_SNIPPET}
 {schema}
 </head>
 <body>
@@ -124,7 +132,7 @@ def footer(prefix):
         ("Residential Services","residential.html"),("Residential Plumbing","plumbing.html"),
         ("Heating & Hydronics","heating.html"),("Lochinvar Boilers","boilers.html"),
         ("Fixtures & Product Lines","residential.html"),("Commercial Chillers","commercial.html"),
-        ("Commercial & Government","commercial.html"),("Drain & Sewer","plumbing.html")])
+        ("Commercial & Government","commercial.html"),("Sewer Line Service","plumbing.html")])
     comp = "".join(f'<li><a href="{prefix}{h}">{l}</a></li>' for l, h in [
         ("About Us","about.html"),("Service Area","service-area.html"),("Reviews","reviews.html"),
         ("FAQ","faq.html"),("Blog","blog/index.html"),("Careers","careers.html"),
@@ -176,7 +184,7 @@ def floating(prefix):
   <a class="cb-quote" href="{prefix}contact.html">{IC["wrench"]} Free Estimate</a>
 </div>
 <button class="back-to-top" aria-label="Back to top">{IC["arrow-up"]}</button>
-<script src="{prefix}js/main.js?v=5" defer></script>
+<script src="{prefix}js/main.js?v=6" defer></script>
 </body>
 </html>'''
 

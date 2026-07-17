@@ -3,7 +3,7 @@
 import os, json
 from build import (SITE_URL, BIZ_NAME, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST, ADDR_CITY,
                    ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON, AREAS, COUNTIES,
-                   TESTIMONIAL, TESTIMONIAL2, IC, FORMSPREE_ID,
+                   TESTIMONIAL, TESTIMONIAL2, TESTIMONIAL3, IC, FORMSPREE_ID,
                    HIRING_BANNER_ON, HIRING_BANNER_TEXT, HIRING_BANNER_CTA,
                    HIRING_BANNER_LINK)
 from make import render, page_hero, service_card
@@ -72,7 +72,7 @@ home_body = hiring_banner + f'''
       <p class="lead">Whether it&apos;s a burst pipe, no heat on a cold night, or a brand-new radiant heating system, our Mitchell technicians show up on time and get it done clean.</p>
     </div>
     <div class="grid grid-3" style="margin-top:44px">
-      {service_card("drop","Plumbing Service & Repair","Leaks, clogs, water heaters, fixtures, repipes, sewer and drain lines. Fast diagnosis and a clean fix &mdash; the first time.","plumbing.html","Explore Plumbing")}
+      {service_card("drop","Plumbing Service & Repair","Leaks, water heaters, fixtures, repipes, and sewer lines. Fast diagnosis and a clean fix &mdash; the first time.","plumbing.html","Explore Plumbing")}
       {service_card("flame","Heating & Hydronics","Radiant in-floor heat and hydronic systems, powered by high-efficiency Lochinvar boilers &mdash; installed, serviced, and repaired to keep South Dakota winters outside.","heating.html","Explore Heating","card--coral")}
       {service_card("thermo","Lochinvar Boilers","We design, install, and service high-efficiency Lochinvar boiler systems built to last through decades of Dakota cold.","boilers.html","See Boiler Systems","card--gold")}
       {service_card("building","Commercial Plumbing","Restaurants, offices, retail, and multi-unit buildings. Code-compliant work that keeps your business running.","commercial.html","Commercial Work","card--blue")}
@@ -237,7 +237,7 @@ services_body = f'''
     <div class="text-center reveal"><p class="eyebrow">Full-Service Contractor</p><h2 class="section-title">How Can Mitch Help?</h2><p class="lead">No job is too big or too small. Here&apos;s a look at what we do &mdash; click any service to learn more.</p></div>
     <div class="grid grid-3" style="margin-top:44px">
       {service_card("heart","Residential Services","Plumbing, heating, remodels &mdash; and name-brand fixtures you pick from our vendor catalogs.","residential.html","Residential &amp; Product Lines")}
-      {service_card("drop","Plumbing Service &amp; Repair","Faucets, toilets, water heaters, repipes, drain &amp; sewer cleaning, gas lines, and more.","plumbing.html","Plumbing Details","card--blue")}
+      {service_card("drop","Plumbing Service &amp; Repair","Faucets, toilets, water heaters, repipes, sewer lines, gas lines, and more.","plumbing.html","Plumbing Details","card--blue")}
       {service_card("flame","Heating &amp; Hydronics","Radiant in-floor heat and hydronic heating systems engineered for efficient, even South Dakota comfort.","heating.html","Heating &amp; Hydronics","card--coral")}
       {service_card("thermo","Lochinvar Boiler Systems","High-efficiency boiler design, installation, and service from a name built for cold climates.","boilers.html","Boiler Systems","card--gold")}
       {service_card("building","Commercial Plumbing","Reliable, code-compliant plumbing for restaurants, offices, retail, and multi-unit properties.","commercial.html","Commercial","card--blue")}
@@ -319,9 +319,9 @@ def services_grid(title, eyebrow, cards, bg="bg-dots"):
 
 # PLUMBING
 plumbing_body = (
-  page_hero("Plumbing Services in Mitchell, SD", "From a leaky faucet to a full repipe &mdash; residential and commercial plumbing done fast, reliable, and clean.", "Leaks, clogs, water heaters &amp; more")
+  page_hero("Plumbing Services in Mitchell, SD", "From a leaky faucet to a full repipe &mdash; residential and commercial plumbing done fast, reliable, and clean.", "Leaks, water heaters &amp; more")
   + detail_intro("Residential &amp; Commercial Plumbing", "Plumbing You Can Count On", "done right the first time",
-      "When something&apos;s leaking, clogged, or just not working, you want a plumber who shows up fast and fixes it for good. Our Mitchell technicians handle everything from quick repairs to whole-home repipes &mdash; with clean, respectful work every time.",
+      "When something&apos;s leaking or just not working, you want a plumber who shows up fast and fixes it for good. Our Mitchell technicians handle everything from quick repairs to whole-home repipes &mdash; with clean, respectful work every time.",
       ["Fast, responsive local service",
        "Up-front pricing approved before we start",
        "Workmanship that lasts &mdash; backed by 35+ years"],
@@ -329,14 +329,14 @@ plumbing_body = (
   + services_grid("Plumbing Services We Offer", "What We Fix &amp; Install", [
       ("drop","Leak Detection &amp; Repair","Hidden leaks, dripping faucets, running toilets, and pipe repairs &mdash; found fast and fixed clean.","" ),
       ("flame","Water Heaters","Repair and installation of tank and tankless water heaters sized right for your home or business.","card--coral"),
-      ("tools","Drain &amp; Sewer Cleaning","Clogged drains and sewer lines cleared with professional equipment, plus camera inspections.","card--gold"),
+      ("tools","Sewer Line Service","Sewer line repair and replacement with accurate bids, quality work, and clean job sites.","card--gold"),
       ("building","Repipes &amp; New Lines","Whole-home repiping, new water and gas lines, and fixture upgrades.","card--blue"),
       ("check","Fixtures &amp; Faucets","Sinks, tubs, showers, toilets, garbage disposals, and that perfect new faucet installed right.",""),
       ("shield","Gas Lines","New gas piping and safe, code-compliant connections for ranges, dryers, and appliances.","card--coral"),
     ])
   + services_grid("Common Reasons Neighbors Call", "How Can We Help?", [
       ("drop","No Hot Water","We diagnose and repair or replace your water heater fast.",""),
-      ("tools","Clogged or Slow Drains","Kitchen, bath, and main-line clogs cleared and inspected.","card--gold"),
+      ("tools","Sewer Line Trouble","Aging or damaged sewer lines &mdash; accurate bids, repairs, and full replacements.","card--gold"),
       ("flame","Frozen or Burst Pipes","Dakota winters are tough &mdash; we thaw, repair, and prevent.","card--coral"),
     ], bg="bg-checker")
 )
@@ -376,7 +376,7 @@ residential_body = f'''
         <h2 class="section-title">One Crew For <span class="script">the whole house</span></h2>
         <p class="lead">From a dripping faucet to a full bathroom remodel or a new radiant heating system, Mitchell Plumbing &amp; Heating handles it all &mdash; installed by the same local, family-owned crew your neighbors have trusted since 1990.</p>
         <ul class="checks">
-          <li><strong>Plumbing service &amp; repair</strong> &mdash; leaks, drains, water heaters, repipes</li>
+          <li><strong>Plumbing service &amp; repair</strong> &mdash; leaks, water heaters, repipes, sewer lines</li>
           <li><strong>Radiant &amp; hydronic heating</strong> &mdash; powered by Lochinvar boilers</li>
           <li><strong>Fixtures &amp; remodels</strong> &mdash; sinks, tubs, showers, toilets &amp; faucets you choose</li>
         </ul>
@@ -386,8 +386,11 @@ residential_body = f'''
         </div>
       </div>
       <div class="split-media reveal" style="display:flex;justify-content:center">
-        <img src="assets/img/mitch-thumb.png" alt="Mitch the plumber mascot giving a thumbs up for residential services" width="300" height="360" loading="lazy" style="background:var(--cream);padding:26px 22px;max-width:320px;width:100%;height:auto">
+        <img src="assets/img/mitch-thumb.png" alt="Mitch the plumber mascot giving a thumbs up for residential services" width="300" height="360" loading="lazy" style="background:#fff;padding:26px 22px;max-width:320px;width:100%;height:auto">
       </div>
+    </div>
+    <div class="callout reveal" style="margin-top:44px">
+      <p>No job is too big or too small for us!</p>
     </div>
   </div>
 </section>
@@ -587,6 +590,11 @@ reviews_cards = f'''
   <div class="stars" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
   <p>&ldquo;{TESTIMONIAL2["body"]}&rdquo;</p>
   <p class="quote-author">{TESTIMONIAL2["author"]}<span>{TESTIMONIAL2["org"]}</span></p>
+</div>
+<div class="quote-card reveal" style="grid-column:1/-1">
+  <div class="stars" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
+  <p>&ldquo;{TESTIMONIAL3["body"]}&rdquo;</p>
+  <p class="quote-author">{TESTIMONIAL3["author"]}<span>{TESTIMONIAL3["org"]}</span></p>
 </div>'''
 reviews_body = f'''
 {page_hero("Reviews &amp; Testimonials", "Don&apos;t just take our word for it &mdash; hear from the builders and neighbors who trust Mitchell Plumbing &amp; Heating.", "Rated by the people who matter")}
@@ -894,10 +902,10 @@ PAGES = [
     desc="Meet Mitchell Plumbing & Heating: a family-owned plumbing & heating company serving Mitchell, SD since 1990. Meet Mitch and learn what we stand for.",
     canonical="about.html", body=about_body, crumbs=cr(HOME,("About",None)))),
  ("services.html", dict(title="Plumbing & Heating Services | Mitchell, SD",
-    desc="Plumbing & heating in Mitchell, SD — repairs, water heaters, drains, radiant & hydronic heating, Lochinvar boilers & commercial work. Free estimates.",
+    desc="Plumbing & heating in Mitchell, SD — repairs, water heaters, sewer lines, radiant & hydronic heating, Lochinvar boilers & commercial work. Free estimates.",
     canonical="services.html", body=services_body, crumbs=cr(HOME,("Services",None)))),
- ("plumbing.html", dict(title="Plumbing Services in Mitchell, SD | Repairs & Drains",
-    desc="Fast, clean plumbing in Mitchell, SD: leak repair, water heaters, drain & sewer cleaning, repipes & free estimates. Call (605) 996-7583.",
+ ("plumbing.html", dict(title="Plumbing Services in Mitchell, SD | Repairs & Water Heaters",
+    desc="Fast, clean plumbing in Mitchell, SD: leak repair, water heaters, sewer line service, repipes & free estimates. Call (605) 996-7583.",
     canonical="plumbing.html", body=plumbing_body, crumbs=cr(HOME,("Services","services.html"),("Plumbing",None)),
     schema=[{"@type":"Service","name":"Plumbing Services","serviceType":"Plumbing","provider":{"@id":SITE_URL+"/#business"},"areaServed":{"@type":"City","name":"Mitchell, SD"}}])),
  ("residential.html", dict(title="Residential Services & Product Lines | Mitchell, SD",

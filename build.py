@@ -15,7 +15,7 @@ BIZ_NAME   = "Mitchell Plumbing & Heating Co. Inc."
 BIZ_ALT    = "Mitchell Plumbing and Heating"
 PHONE_DISP = "(605) 996-7583"
 PHONE_TEL  = "+16059967583"
-EMAIL      = "cody@mphsd.com"
+EMAIL      = "derekg@mphsd.com"
 ADDR_ST    = "801 N. Rowley St."
 ADDR_CITY  = "Mitchell"
 ADDR_STATE = "SD"
@@ -45,6 +45,23 @@ HIRING_BANNER_LINK = "careers.html"
 # Leave "" for demo mode: the form shows a success message but sends nothing.
 # ----------------------------------------------------------------------------
 FORMSPREE_ID = ""
+
+# ----------------------------------------------------------------------------
+# Analytics & Search Console (free Google tools — see ANALYTICS.md for setup).
+#   GA4_ID: Google Analytics 4 measurement ID.
+#     1. Create a GA4 property at https://analytics.google.com (Admin > Create Property)
+#     2. Add a "Web" data stream for https://mphsd.com
+#     3. Copy the Measurement ID (looks like G-ABC123XYZ) and paste it below
+#   GSC_VERIFICATION: Google Search Console ownership token.
+#     1. Add https://mphsd.com at https://search.google.com/search-console
+#        (choose "URL prefix", then the "HTML tag" verification method)
+#     2. It shows <meta name="google-site-verification" content="TOKEN">
+#        — paste just the TOKEN part below
+#   Then re-run: python pages.py, commit & push, and click Verify in Search Console.
+# Leave "" to disable — no tracking code is emitted at all.
+# ----------------------------------------------------------------------------
+GA4_ID           = ""
+GSC_VERIFICATION = ""
 
 # Off-site profiles. Paste real URLs here to (1) populate schema.org `sameAs`
 # entity links and (2) activate the footer social icons. Leave "" to disable.
@@ -94,6 +111,24 @@ TESTIMONIAL2 = {
              "throughout the entire process start to finish. The work itself was high quality, too. "
              "I'd absolutely recommend Mitchell Plumbing for both great customer service and solid "
              "workmanship.")
+}
+
+TESTIMONIAL3 = {
+    "author": "Bob",
+    "org": "Homeowner, Mitchell, SD",
+    "highlight": ("When it came time to add a water softener and filtration system, you provided "
+                  "a proposal and scope of work that was priced fairly with top quality equipment. "
+                  "Your service technician did a superb install. I couldn't even tell he was there!"),
+    "body": ("I want to truly express my gratitude and appreciation for the great work you have "
+             "provided from new construction three years ago up to and including the service you "
+             "have provided! Being it my choice to utilize a tankless hot water system, you have "
+             "continued to amaze me with your service of this unit. After many unsuccessful trips, "
+             "you were professionally inclined to replace this unit. Thanks to you and the "
+             "manufacturer it has worked flawlessly. When it came time to think of adding a water "
+             "softener and filtration system, you provided a proposal and scope of work that was "
+             "priced fairly with top quality equipment. Your service technician was on the job and "
+             "did a superb install. I couldn't even tell he was there! I would highly recommend "
+             "anyone in doubt to contact me about your performance! Thank you for all you have done!")
 }
 
 # ----------------------------------------------------------------------------
@@ -168,7 +203,7 @@ def business_node():
              "opens": "08:00", "closes": "17:00"}],
         "knowsAbout": ["Hydronic heating", "Radiant floor heating", "Lochinvar boilers",
                        "Boiler installation & repair", "Water heaters", "Tankless water heaters",
-                       "Drain cleaning", "Sewer line service", "Fixture installation",
+                       "Sewer line service", "Fixture installation",
                        "Commercial plumbing", "Commercial chillers", "Chiller installation & repair",
                        "New construction plumbing", "Remodel plumbing",
                        "Moen fixtures", "Delta fixtures", "Kohler fixtures", "Gerber fixtures",
@@ -183,7 +218,7 @@ def business_node():
             ["Residential Plumbing", "Commercial Plumbing", "Government & Municipal Plumbing",
              "Hydronic & Radiant Heating", "Lochinvar Boiler Systems",
              "Commercial Chiller Service", "Water Heater Installation",
-             "Drain & Sewer Service", "New Construction & Remodel Plumbing"]],
+             "Sewer Line Service", "New Construction & Remodel Plumbing"]],
     }
 
 def website_node():

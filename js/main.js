@@ -62,6 +62,27 @@
   var yr = document.querySelector("[data-year]");
   if (yr) yr.textContent = new Date().getFullYear();
 
+  /* ---- Analytics events (GA4) ----
+     No-ops safely when GA4_ID isn't set in build.py (gtag undefined). */
+  function track(name, params) {
+    if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) return;
+    var href = a.getAttribute("href") || "";
+    var page = location.pathname;
+    if (href.indexOf("tel:") === 0) {
+      track("phone_call", { link_text: (a.textContent || "").trim().slice(0, 60), page_path: page });
+    } else if (href.indexOf("sms:") === 0) {
+      track("sms_click", { page_path: page });
+    } else if (href.indexOf("mailto:") === 0) {
+      track("email_click", { page_path: page });
+    } else if (/^https?:\/\//i.test(href) && a.hostname !== location.hostname) {
+      track("outbound_click", { link_domain: a.hostname, link_url: href, page_path: page });
+    }
+  });
+
   /* ---- Quote / contact form (front-end demo handling) ---- */
   var form = document.querySelector("form[data-quote-form]");
   if (form) {
@@ -117,7 +138,13 @@
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
       var done = function (ok) {
         if (btn) { btn.disabled = false; btn.textContent = "Send My Request"; }
-        if (ok) form.reset();
+        if (ok) {
+          track("generate_lead", {
+            purpose: purposeSel ? purposeSel.value : "",
+            page_path: location.pathname
+          });
+          form.reset();
+        }
         if (!status) return;
         if (ok) {
           status.style.color = "var(--teal-deep)";
