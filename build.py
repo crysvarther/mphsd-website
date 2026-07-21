@@ -44,7 +44,7 @@ HIRING_BANNER_LINK = "careers.html"
 #   3. Re-run: python pages.py, then commit & push
 # Leave "" for demo mode: the form shows a success message but sends nothing.
 # ----------------------------------------------------------------------------
-FORMSPREE_ID = ""
+FORMSPREE_ID = "xykrpbkw"
 
 # ----------------------------------------------------------------------------
 # Analytics & Search Console (free Google tools — see ANALYTICS.md for setup).
