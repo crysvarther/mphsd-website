@@ -58,12 +58,74 @@ business this often drives more calls than the website itself. Once claimed, pas
 profile URL into `GBP_URL` in `build.py` (it feeds the schema.org `sameAs` links and the
 footer Google icon) and re-run `python pages.py`.
 
-### 4. Optional: one dashboard to rule them all (~20 min, free)
+### 4. The KPI dashboard (~20 min, free) — full build spec below
 [Looker Studio](https://lookerstudio.google.com) connects to both GA4 and Search Console
-and gives you a single bookmarkable "how's the website doing" page: visits, top pages,
-search queries, phone clicks, form leads, month-over-month trends. Create a blank report
-→ Add data → pick the GA4 property and the Search Console property → drop in scorecards
-for the events above.
+and gives you a single bookmarkable "how's the website doing" page that refreshes itself
+every time you open it. Build it once using the paint-by-numbers spec in the next
+section; after that it's a live graphical dashboard on demand — the equivalent of the
+Wix Analytics home screen, except you own it.
+
+---
+
+## Looker Studio dashboard — build spec
+
+Prerequisites: steps 1 and 2 above are done, and at least a few days of data have
+accumulated (charts on an empty property look broken — they aren't).
+
+### Setup (once)
+1. Go to https://lookerstudio.google.com → **Blank Report**.
+2. It asks to add data. Add **two** sources:
+   - **Google Analytics** connector → pick the *Mitchell Plumbing & Heating* GA4 property
+   - **Search Console** connector → pick the `https://mphsd.com` property →
+     choose **"Site Impression"** table → **"web"** search type
+3. Rename the report (top-left): `MPHSD — Website KPIs`.
+4. Top menu **Theme and layout** → pick any theme you like (this is purely cosmetic).
+
+Every widget below is added with **Insert →** (chart type), then set the **Data source**,
+**Dimension**, and **Metric** in the right-hand panel. Set the report-level default date
+range to **Last 28 days** with comparison to **Previous period** (File → Report settings).
+
+### Row 1 — "Did the website make the phone ring?" (4 scorecards, GA4 source)
+| # | Widget | Metric | Settings |
+|---|---|---|---|
+| 1 | Scorecard | **Key events** filtered to `phone_call` | Add a chart filter: Event name = `phone_call`. Label it "Phone calls from site" |
+| 2 | Scorecard | **Key events** filtered to `generate_lead` | Chart filter: Event name = `generate_lead`. Label "Quote requests" |
+| 3 | Scorecard | **Total users** | Label "Visitors" |
+| 4 | Scorecard | **Sessions** | Label "Visits" |
+
+For each: turn on **comparison to previous period** (right panel → Date range compare) so
+every number shows a green/red % change arrow. These four tiles are the whole business
+case for the website — keep them top-left where the eye lands first.
+
+### Row 2 — trend + where visitors come from (GA4 source)
+| Widget | Dimension | Metric | Notes |
+|---|---|---|---|
+| Time series chart | Date | Sessions; add 2nd metric: Key events | One line = traffic, one = conversions. The gap between them is opportunity |
+| Pie chart | Session default channel group | Sessions | Shows Organic Search vs Direct vs Social vs Referral — i.e., "is SEO working?" |
+
+### Row 3 — what they do on the site (GA4 source)
+| Widget | Dimension | Metric | Notes |
+|---|---|---|---|
+| Table | Page path and screen class | Views; Total users | Sort by Views desc, top 10. Which services/towns pull traffic |
+| Table | Event name | Event count | Chart filter: Event name in `phone_call, generate_lead, sms_click, email_click, outbound_click`. All conversions side-by-side |
+
+### Row 4 — Google Search performance (Search Console source)
+| Widget | Dimension | Metric | Notes |
+|---|---|---|---|
+| Table | Query | Impressions; Url Clicks; Average Position | Sort by Impressions desc, top 15. What people type into Google — feeds blog topics |
+| Time series | Date | Impressions; Url Clicks | The long-term SEO trend line. Expect this to climb for months after launch |
+
+### Finish
+- **Share** (top right) → give view access to whoever at the company should see it, or
+  turn on link sharing → bookmark the link. Opening it always shows current data.
+- Optional: Share → **Schedule delivery** → email a PDF snapshot to the owner monthly.
+- The **date picker** widget (Insert → Date range control, drop it top-right) lets anyone
+  flip the whole dashboard between "last 7 days / 28 days / this year vs last year" on
+  the fly.
+
+> Field names occasionally get renamed by Google. If a metric listed above isn't shown
+> verbatim, use the search box in the metric picker — e.g. "key events" was called
+> "conversions" before 2024.
 
 ## The KPIs worth watching monthly
 
