@@ -60,7 +60,7 @@ FORMSPREE_ID = "xykrpbkw"
 #   Then re-run: python pages.py, commit & push, and click Verify in Search Console.
 # Leave "" to disable — no tracking code is emitted at all.
 # ----------------------------------------------------------------------------
-GA4_ID           = ""
+GA4_ID           = "G-4LYW71CZQR"
 GSC_VERIFICATION = ""
 
 # Off-site profiles. Paste real URLs here to (1) populate schema.org `sameAs`
