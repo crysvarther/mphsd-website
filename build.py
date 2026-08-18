@@ -50,7 +50,7 @@ FORMSPREE_ID = "xykrpbkw"
 # higher) — the free tier rejects attachments, so leave this False until the
 # Formspree account is upgraded. Then set True, run `python pages.py`, commit & push.
 # Limits enforced client-side: 5 photos, 10 MB each (Formspree allows 10 x 25 MB).
-FORM_UPLOADS = False
+FORM_UPLOADS = True
 
 # ----------------------------------------------------------------------------
 # Analytics & Search Console (free Google tools — see ANALYTICS.md for setup).
