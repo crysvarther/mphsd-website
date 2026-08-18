@@ -134,6 +134,28 @@
       e.preventDefault();
       var status = form.querySelector(".form-status");
       if (!form.checkValidity()) { form.reportValidity(); return; }
+      /* Photo attachment checks (field only exists when FORM_UPLOADS is on) */
+      var photos = form.querySelector('input[type="file"][name="photos"]');
+      if (photos && photos.files && photos.files.length) {
+        var maxFiles = parseInt(photos.getAttribute("data-max-files") || "5", 10);
+        var maxMb = parseInt(photos.getAttribute("data-max-mb") || "10", 10);
+        var problem = "";
+        if (photos.files.length > maxFiles) {
+          problem = "Please attach no more than " + maxFiles + " photos.";
+        }
+        for (var i = 0; !problem && i < photos.files.length; i++) {
+          var f = photos.files[i];
+          if (f.type && f.type.indexOf("image/") !== 0) {
+            problem = "Photos only, please — \"" + f.name + "\" isn't an image.";
+          } else if (f.size > maxMb * 1024 * 1024) {
+            problem = "\"" + f.name + "\" is over " + maxMb + " MB — please choose a smaller photo.";
+          }
+        }
+        if (problem) {
+          if (status) { status.style.color = "var(--coral-deep)"; status.textContent = problem; }
+          return;
+        }
+      }
       var btn = form.querySelector('button[type="submit"]');
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
       var done = function (ok) {

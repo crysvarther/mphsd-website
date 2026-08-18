@@ -46,6 +46,12 @@ HIRING_BANNER_LINK = "careers.html"
 # ----------------------------------------------------------------------------
 FORMSPREE_ID = "xykrpbkw"
 
+# Photo uploads on the estimate form. Requires a PAID Formspree plan (Personal or
+# higher) — the free tier rejects attachments, so leave this False until the
+# Formspree account is upgraded. Then set True, run `python pages.py`, commit & push.
+# Limits enforced client-side: 5 photos, 10 MB each (Formspree allows 10 x 25 MB).
+FORM_UPLOADS = False
+
 # ----------------------------------------------------------------------------
 # Analytics & Search Console (free Google tools — see ANALYTICS.md for setup).
 #   GA4_ID: Google Analytics 4 measurement ID.
