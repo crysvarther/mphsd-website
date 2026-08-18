@@ -56,23 +56,19 @@ identical across every page. To change content:
 **Single source of truth** for phone, address, hours, service-area towns, and the
 testimonial lives at the top of `build.py`. Change it once, re-run, done.
 
-## Before you go live
+## Live-site switches (in `build.py`)
 
-1. **Wire up the form.** `js/main.js` currently simulates submission. Point the
-   `<form data-quote-form>` in `contact.html` at a real endpoint — e.g.
-   [Formspree](https://formspree.io), Netlify Forms, or your CRM — and have it redirect to
-   `thank-you.html` on success.
-2. **Confirm the domain** in `build.py` (`SITE_URL`) is `https://mphsd.com`, then re-run
-   `python pages.py` so canonicals/Open Graph/schema all use the live URL.
-3. **Add real profiles.** In `build.py`, fill the `"sameAs"` list with the company's Google
-   Business Profile, Facebook, etc. — this strengthens SEO/AEO. Update the footer Facebook link.
-4. **Verify business hours** in `build.py` (`openingHoursSpecification`) — currently Mon–Fri
-   8–5 with 24/7 emergency noted in copy.
-5. **Turn on analytics.** Paste your GA4 measurement ID and Search Console token into
-   `build.py` and re-run — phone-call, form-lead, and traffic tracking are already wired
-   in. Full walkthrough (incl. sitemap submission + Looker Studio dashboard): **`ANALYTICS.md`**.
-6. (Optional) Generate PNG favicons / a 512×512 maskable icon if you want richer PWA install
-   art; `favicon.svg` and the logo already cover modern browsers.
+The site is live at https://mphsd.com — form (Formspree), GA4 analytics, favicons, and the
+custom domain are all wired up. Remaining feature switches:
+
+1. **`FORM_UPLOADS` — photo attachments on the estimate form.** Currently `False`.
+   Requires a **paid Formspree plan** (Personal or higher; the free tier rejects
+   attachments). After upgrading the Formspree account, set `FORM_UPLOADS = True`,
+   run `python pages.py`, commit & push. The form then shows a styled "Photos of the
+   problem" field (5 photos max, 10 MB each, images only — enforced client-side in
+   `js/main.js`); photos arrive with each submission in the Formspree dashboard.
+   Until then, the form shows the "text photos to (605) 933-2095" note instead.
+2. **Analytics walkthrough** (sitemap, Looker Studio, call tracking): see **`ANALYTICS.md`**.
 
 ## SEO / AEO / GEO / AIO built in
 

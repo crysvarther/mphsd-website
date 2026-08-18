@@ -501,6 +501,13 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
 }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(30,84,207,.18); }
 .field textarea { min-height: 130px; resize: vertical; }
+.field input[type="file"] { padding: 10px; background: var(--cream); border-style: dashed; cursor: pointer; }
+.field input[type="file"]::file-selector-button {
+  font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
+  font-size: .85rem; background: var(--blue); color: #fff; border: 2px solid var(--navy);
+  border-radius: 50px; padding: 8px 16px; margin-right: 12px; cursor: pointer;
+}
+.field input[type="file"]::file-selector-button:hover { background: var(--blue-bright); }
 .field .req { color: var(--coral); }
 .form-note { font-size:.85rem; color: var(--ink-soft); }
 .form-status { margin-top: 14px; font-weight:600; }

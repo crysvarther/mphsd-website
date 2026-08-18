@@ -3,7 +3,7 @@
 import os, json
 from build import (SITE_URL, BIZ_NAME, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST, ADDR_CITY,
                    ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON, AREAS, COUNTIES,
-                   TESTIMONIAL, TESTIMONIAL2, TESTIMONIAL3, IC, FORMSPREE_ID,
+                   TESTIMONIAL, TESTIMONIAL2, TESTIMONIAL3, IC, FORMSPREE_ID, FORM_UPLOADS,
                    HIRING_BANNER_ON, HIRING_BANNER_TEXT, HIRING_BANNER_CTA,
                    HIRING_BANNER_LINK)
 from make import render, page_hero, service_card
@@ -667,6 +667,16 @@ faq_schema = [{
 # CONTACT
 # ============================================================================
 FORM_ENDPOINT = f"https://formspree.io/f/{FORMSPREE_ID}" if FORMSPREE_ID else ""
+
+# Photo attachments (behind the FORM_UPLOADS switch in build.py — needs paid Formspree)
+UPLOAD_ENCTYPE = ' enctype="multipart/form-data"' if FORM_UPLOADS else ''
+if FORM_UPLOADS:
+    PHOTO_FIELD = '''<div class="field"><label for="photos">Photos of the problem (optional)</label>
+            <input id="photos" name="photos" type="file" accept="image/*" multiple data-max-files="5" data-max-mb="10">
+            <p class="form-note" style="margin-top:6px">Snap the leak, boiler, or bathroom with your phone &mdash; up to 5 photos, 10&nbsp;MB each. It helps us quote faster. Prefer texting? Send them to <a href="sms:+16059332095"><strong>(605) 933-2095</strong></a>.</p>
+          </div>'''
+else:
+    PHOTO_FIELD = '''<p class="form-note" style="margin-bottom:14px">Have photos of the problem? Text them to <a href="sms:+16059332095"><strong>(605) 933-2095</strong></a> &mdash; it helps us quote faster.</p>'''
 contact_body = f'''
 {page_hero("Contact Us", "Ready to get started? Reach out for fast, friendly service and a free estimate.", "Let&apos;s get it fixed")}
 <section class="section bg-dots">
@@ -687,7 +697,7 @@ contact_body = f'''
         </div>
       </div>
       <div class="reveal">
-        <form class="form-card" data-quote-form action="{FORM_ENDPOINT or '#'}" data-endpoint="{FORM_ENDPOINT}" method="post" novalidate>
+        <form class="form-card" data-quote-form action="{FORM_ENDPOINT or '#'}" data-endpoint="{FORM_ENDPOINT}" method="post"{UPLOAD_ENCTYPE} novalidate>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <h2 style="font-family:var(--font-head);text-transform:uppercase;margin-bottom:4px">How Can We Help?</h2>
           <p class="form-note" style="margin-bottom:18px">Fill this out and Mitch will get right back to you. <span class="req">*</span> required.</p>
@@ -718,7 +728,7 @@ contact_body = f'''
             </select>
           </div>
           <div class="field"><label for="message">Details</label><textarea id="message" name="message" placeholder="Tell us what&apos;s going on, your address or town, and the best time to reach you."></textarea></div>
-          <p class="form-note" style="margin-bottom:14px">Have photos of the problem? Text them to <a href="sms:+16059332095"><strong>(605) 933-2095</strong></a> &mdash; it helps us quote faster.</p>
+          {PHOTO_FIELD}
           <button class="btn btn--lg" type="submit" style="width:100%">Send My Request</button>
           <p class="form-status" role="status" aria-live="polite"></p>
           <p class="form-note" style="margin-top:10px">Prefer to talk? Call <a href="tel:{P}"><strong>{PD}</strong></a> &mdash; a real local technician will answer.</p>
