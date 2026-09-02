@@ -139,6 +139,23 @@ case for the website — keep them top-left where the eye lands first.
 > verbatim, use the search box in the metric picker — e.g. "key events" was called
 > "conversions" before 2024.
 
+### Managing multiple client sites from one dashboard
+
+Looker Studio has a **Data control** widget made exactly for this: **Insert → Data
+control**, drop it at the top of the report next to the date picker. It renders as a
+dropdown listing every GA4 property your signed-in Google account can access — pick a
+different company and the entire dashboard (all GA4-sourced charts) switches to that
+site's data instantly.
+
+- To add a new client: create their GA4 property (or get viewer access to an existing
+  one via GA4 → Admin → Property access management). It appears in the dropdown
+  automatically — no report editing needed.
+- The Search Console widgets (Row 4) are the one exception: a data control only swaps
+  sources from one connector at a time. Either add a second data control bound to the
+  Search Console connector, or keep Row 4 per-site on separate report pages.
+- Same trick works for viewers you share with: they see only properties *their* account
+  can access.
+
 ## The KPIs worth watching monthly
 
 1. **Phone calls + form leads** (GA4 key events) — the only numbers that pay the bills
