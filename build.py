@@ -82,7 +82,10 @@ AREAS = ["Mitchell", "Mount Vernon", "Ethan", "Alexandria", "Parkston", "Plankin
 COUNTIES = ["Davison County", "Hanson County", "Sanborn County", "Aurora County",
             "Jerusalem", "Douglas County"]
 
-# Real client testimonial (used on-page and in Review schema)
+# Real client testimonials — rendered ON-PAGE ONLY (see reviews.html / the home page).
+# Deliberately NOT emitted as Review/AggregateRating schema: self-serving review markup on
+# your own LocalBusiness is disregarded (and can be flagged) by Google — see the NOTE in
+# business_node() below. Rich-result stars are meant to come from the Google Business Profile.
 TESTIMONIAL = {
     "author": "Greg Neppl",
     "org": "Dakota Custom Builders, LLC",
