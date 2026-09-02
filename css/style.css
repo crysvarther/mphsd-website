@@ -191,8 +191,11 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
   border-radius: 8px;
   position: relative;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--coral); background: rgba(232,80,58,.08); }
+.nav-links a:hover, .nav-links a.active { color: var(--coral-deep); background: rgba(232,80,58,.08); } /* deep coral: 4.6:1 on the tint */
 .nav-cta { margin-left: 6px; }
+/* .nav-links a wins specificity over .btn and painted the CTA navy-on-coral (3.9:1);
+   white on deep coral is 5.2:1 and matches the hiring tag + callbar. */
+.nav-cta .btn { --btn-bg: var(--coral-deep); color: #fff; }
 
 /* dropdown */
 .has-sub { position: relative; }
