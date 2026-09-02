@@ -3,6 +3,18 @@
    "Fast. Reliable. Clean."  ·  Est. 1990  ·  Mitchell, SD
    ============================================================ */
 
+/* ---------- Self-hosted web fonts (latin subsets, from Google Fonts) ----------
+   Served from mphsd.com instead of fonts.googleapis.com so text can paint
+   without waiting on two third-party connections. font-display: swap shows
+   the fallback face immediately and swaps when the file arrives. */
+@font-face { font-family: "Anton"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/anton-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Oswald"; font-style: normal; font-weight: 200 700; font-display: swap; src: url("../assets/fonts/oswald-latin-var.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Pacifico"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/pacifico-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Poppins"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/poppins-latin-400.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Poppins"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/poppins-latin-500.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Poppins"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/poppins-latin-600.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Poppins"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/poppins-latin-700.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
 /* ---------- Design Tokens ---------- */
 :root {
   /* Mid-century palette */
@@ -165,7 +177,7 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
 .bn-name { font-family: var(--font-display); text-transform: uppercase; font-size: 1.6rem; line-height: .88; letter-spacing: .5px; color: var(--navy); }
 .bn-sub { font-family: var(--font-head); font-weight: 700; text-transform: uppercase; font-size: .72rem; letter-spacing: 1.5px; line-height: 1; color: var(--blue); }
 .bn-amp { color: var(--coral); }
-.bn-tag { font-family: var(--font-head); font-weight: 600; text-transform: uppercase; font-size: .54rem; letter-spacing: 1.6px; line-height: 1; color: var(--coral); margin-top: 2px; }
+.bn-tag { font-family: var(--font-head); font-weight: 600; text-transform: uppercase; font-size: .54rem; letter-spacing: 1.6px; line-height: 1; color: var(--coral-deep); margin-top: 2px; }
 
 .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
 .nav-links a {
@@ -532,7 +544,7 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
 .site-footer { background: var(--navy-deep); color: #c5d2ee; padding: 60px 0 0; border-top: 6px solid var(--gold); }
 .footer-grid { display:grid; gap: 34px; }
 @media (min-width: 760px){ .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1.3fr; } }
-.site-footer h4 { font-family: var(--font-head); text-transform: uppercase; letter-spacing:1.5px; color: var(--gold); font-size: 1rem; margin-bottom: 16px; }
+.site-footer h3 { font-family: var(--font-head); text-transform: uppercase; letter-spacing:1.5px; color: var(--gold); font-size: 1rem; margin-bottom: 16px; }
 .site-footer a { color: #c5d2ee; }
 .site-footer a:hover { color: var(--gold); }
 .footer-links { list-style:none; padding:0; margin:0; }
@@ -553,7 +565,7 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
 .callbar { position: fixed; bottom:0; left:0; right:0; z-index: 90; display:none; }
 .callbar a { display:flex; align-items:center; justify-content:center; gap:8px; padding: 14px; font-family: var(--font-head); text-transform:uppercase; letter-spacing:1px; font-weight:600; color:#fff; }
 .callbar .cb-call { background: var(--teal-deep); flex:1; }
-.callbar .cb-quote { background: var(--coral); flex:1; }
+.callbar .cb-quote { background: var(--coral-deep); flex:1; }
 .callbar svg { width:20px; height:20px; }
 @media (max-width: 720px){ .callbar { display:flex; } body { padding-bottom: 52px; } .back-to-top { bottom: 64px; } }
 
@@ -611,7 +623,7 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
 .hb-tag {
   font-family: var(--font-display); text-transform: uppercase; letter-spacing: 1px;
   font-size: .85rem; line-height: 1;
-  background: var(--coral); color: #fff;
+  background: var(--coral-deep); color: #fff;   /* deep coral: 5.1:1 contrast for white text */
   border: 2px solid var(--navy); box-shadow: 2px 2px 0 var(--navy);
   padding: 5px 10px 4px; transform: rotate(-2deg);
 }
