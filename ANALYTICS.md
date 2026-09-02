@@ -5,6 +5,11 @@ already wired into the site generator — it just needs two IDs pasted into `bui
 (a one-time, ~10-minute job that requires signing in to Google, so it has to be done by
 a person with the company Google account).
 
+> **Status (2026-09-01):** GA4 (`G-4LYW71CZQR`) is live, Search Console is verified (via the
+> `googlef47aeb1d901bc7dc.html` file, so `GSC_VERIFICATION` stays `""`), and the Google Business
+> Profile is verified and wired into the site. Still to do: **step 4 below** (connect the profile
+> to GA4) and the Looker Studio dashboard.
+
 ---
 
 ## What's already built in
@@ -63,14 +68,38 @@ these out as their own "AI assistants" source line.
 Search data takes a few weeks to accumulate — which is why this should happen at launch,
 not later.
 
-### 3. Google Business Profile (biggest local-SEO lever)
-Claim/verify the profile at https://business.google.com. Its built-in insights show
-calls, direction requests, and profile views from Google Maps — for a local trade
-business this often drives more calls than the website itself. Once claimed, paste the
-profile URL into `GBP_URL` in `build.py` (it feeds the schema.org `sameAs` links and the
-footer Google icon) and re-run `python pages.py`.
+### 3. Google Business Profile (biggest local-SEO lever) — ✅ done
+The profile is verified. Its insights show calls, direction requests, and profile views
+from Google Maps — for a local trade business this often drives more calls than the
+website itself.
 
-### 4. The KPI dashboard (~20 min, free) — full build spec below
+Wired into the site as of 2026-09-01:
+- `GBP_URL` = `https://g.page/r/CQziyzk1Su77EBM` — the profile page. Feeds the schema.org
+  `sameAs` links and the footer Google icon.
+- `GBP_REVIEW_URL` = the same URL + `/review` — the write-a-review deep link, used **only**
+  by the "Leave a Google Review" button on `reviews.html`. Keep these separate: `sameAs` and
+  the footer icon should point at the profile, not drop every visitor into a review dialog.
+
+The profile currently has **zero reviews** — see `marketing/google-business-profile-setup.md`
+for the remaining dashboard work (categories, photos, services, review requests).
+
+### 4. Connect the Business Profile to GA4 (~2 min)
+Since June 2026 GA4 pulls Business Profile metrics natively — no tags, no separate login.
+**GA4 → Admin → Product links → Google Business Profile links → Link.**
+
+- Requires Editor/Administrator on the GA4 property **and** Owner/Manager on the profile,
+  signed in as the **same Google account**. Mismatched accounts is the most common reason the
+  profile never appears in the picker.
+- Adds a Business Profile report collection to the left-hand Reports menu with seven metrics:
+  interactions, website clicks, calls, directions, messages, bookings, menus.
+- ⏱ **Rolling six-month window, and it does not backfill** — data only accrues from the day
+  you link, so linking late permanently costs you that history.
+- Limits worth knowing: these metrics are view-only — they can't be used in Explorations,
+  comparisons, or filters — and the integration isn't supported on GA4 subproperties.
+- If the menu item is missing: check the account mismatch above, and confirm you're on a
+  standard property rather than a subproperty.
+
+### 5. The KPI dashboard (~20 min, free) — full build spec below
 [Looker Studio](https://lookerstudio.google.com) connects to both GA4 and Search Console
 and gives you a single bookmarkable "how's the website doing" page that refreshes itself
 every time you open it. Build it once using the paint-by-numbers spec in the next
@@ -159,7 +188,9 @@ site's data instantly.
 ## The KPIs worth watching monthly
 
 1. **Phone calls + form leads** (GA4 key events) — the only numbers that pay the bills
-2. **Calls / directions from Google Business Profile** — the Maps side of the funnel
+2. **Calls / directions from Google Business Profile** — the Maps side of the funnel.
+   Once step 4 is done these sit in GA4's Business Profile reports alongside the website
+   numbers, instead of needing a separate trip to the Business Profile dashboard.
 3. **Search impressions, clicks, and average position** (Search Console) — is SEO working
 4. **Top queries** (Search Console) — what people actually search; feeds blog topics
 5. **Top pages + traffic sources** (GA4) — which services and towns pull visitors
