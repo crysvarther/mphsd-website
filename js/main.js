@@ -72,6 +72,11 @@
     if (!a) return;
     var href = a.getAttribute("href") || "";
     var page = location.pathname;
+    /* Button/CTA usage ("most clicked buttons"). Fires alongside phone_call etc. —
+       cta_click measures which button was used; the others count the conversion. */
+    if (a.closest(".btn, .cta-phone, .cb-call, .cb-quote, .card-link")) {
+      track("cta_click", { cta_label: (a.textContent || "").trim().slice(0, 60), page_path: page });
+    }
     if (href.indexOf("tel:") === 0) {
       track("phone_call", { link_text: (a.textContent || "").trim().slice(0, 60), page_path: page });
     } else if (href.indexOf("sms:") === 0) {

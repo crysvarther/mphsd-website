@@ -71,7 +71,8 @@ GSC_VERIFICATION = ""
 
 # Off-site profiles. Paste real URLs here to (1) populate schema.org `sameAs`
 # entity links and (2) activate the footer social icons. Leave "" to disable.
-GBP_URL      = ""   # Google Business Profile (e.g. https://g.page/r/...) — none yet
+GBP_URL        = "https://g.page/r/CQziyzk1Su77EBM"         # profile page — sameAs + footer icon
+GBP_REVIEW_URL = "https://g.page/r/CQziyzk1Su77EBM/review"  # opens the "write a review" dialog
 FACEBOOK_URL = "https://www.facebook.com/people/Mitchell-Plumbing/100067968330886/"
 SAME_AS = [u for u in (GBP_URL, FACEBOOK_URL) if u]
 

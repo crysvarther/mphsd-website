@@ -19,8 +19,20 @@ Once `GA4_ID` is set in `build.py`, every page automatically reports:
 | `sms_click` | taps the "text us photos" number | photo-quote leads |
 | `email_click` | clicks the email address | email leads |
 | `outbound_click` | clicks to Facebook, Google, Lochinvar, etc. | which off-site profiles get traffic |
+| `cta_click` | clicks any button/CTA (Free Estimate, Call Now, card links…) | which buttons earn their placement — the label rides along as `cta_label` |
 
 If `GA4_ID` is left `""`, zero tracking code is emitted — the site stays tracker-free.
+
+**One-time GA4 click to unlock button labels:** GA4 stores the `cta_label` parameter but
+won't report on it until it's registered. In GA4: **Admin → Custom definitions → Create
+custom dimension** → Dimension name `CTA label`, scope **Event**, event parameter
+`cta_label` → Save. (Applies from that day forward. Without this, `cta_click` still
+counts total button clicks — you just can't split by which button.)
+
+**AI referral traffic needs no extra setup** — visitors who arrive from ChatGPT,
+Perplexity, Gemini, Claude, Copilot, etc. show up automatically with source domains like
+`chatgpt.com` / `perplexity.ai` under Referrals. The HDO Analytics dashboard breaks
+these out as their own "AI assistants" source line.
 
 ## One-time setup (do these in order)
 

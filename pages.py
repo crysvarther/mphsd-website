@@ -5,7 +5,7 @@ from build import (SITE_URL, BIZ_NAME, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST, AD
                    ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON, AREAS, COUNTIES,
                    TESTIMONIAL, TESTIMONIAL2, TESTIMONIAL3, IC, FORMSPREE_ID, FORM_UPLOADS,
                    HIRING_BANNER_ON, HIRING_BANNER_TEXT, HIRING_BANNER_CTA,
-                   HIRING_BANNER_LINK)
+                   HIRING_BANNER_LINK, GBP_REVIEW_URL)
 from make import render, page_hero, service_card
 
 P = PHONE_TEL
@@ -603,7 +603,7 @@ reviews_body = f'''
     <div class="grid grid-2" style="align-items:start">{reviews_cards}</div>
     <div class="text-center" style="margin-top:40px">
       <p class="lead center-block">Worked with us recently? We&apos;d love to hear about it &mdash; and so would your neighbors.</p>
-      <a class="btn btn--gold" href="https://www.google.com/search?q=Mitchell+Plumbing+and+Heating+Mitchell+SD" target="_blank" rel="noopener">{IC["google"]} Leave a Google Review</a>
+      <a class="btn btn--gold" href="{GBP_REVIEW_URL}" target="_blank" rel="noopener">{IC["google"]} Leave a Google Review</a>
     </div>
   </div>
 </section>
