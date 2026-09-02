@@ -270,7 +270,10 @@ ul { margin: 0 0 1.1em; padding-left: 1.2em; }
 .hero-sub { font-size: 1.22rem; color: #eaf1ff; max-width: 46ch; margin-bottom: 1.6em; }
 .hero-cta { display:flex; flex-wrap:wrap; gap: 14px; }
 .hero-mascot { position: relative; text-align:center; }
-.hero-mascot img { margin-inline:auto; filter: drop-shadow(8px 12px 0 rgba(14,29,56,.35)); max-height: 460px; width:auto; }
+/* box-shadow, not filter: drop-shadow — the filter forces a slow raster pass that held
+   first paint back ~1s on phones. The mascot art is a solid white card, so the hard
+   offset box-shadow looks identical. */
+.hero-mascot img { margin-inline:auto; box-shadow: 8px 12px 0 rgba(14,29,56,.35); max-height: 460px; width:auto; }
 
 .hero-trust { display:flex; flex-wrap:wrap; gap: 10px 22px; margin-top: 26px; font-family: var(--font-head); letter-spacing:.5px; }
 .hero-trust span { display:inline-flex; align-items:center; gap:8px; color:#fff; font-size:.96rem; }
