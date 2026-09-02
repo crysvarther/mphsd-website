@@ -6,7 +6,11 @@ from build import (SITE_URL, BIZ_NAME, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST, AD
                    TESTIMONIAL, TESTIMONIAL2, TESTIMONIAL3, IC, FORMSPREE_ID, FORM_UPLOADS,
                    HIRING_BANNER_ON, HIRING_BANNER_TEXT, HIRING_BANNER_CTA,
                    HIRING_BANNER_LINK, GBP_REVIEW_URL)
+from build import img_tag, optimize_images, write_llms_txt
 from make import render, page_hero, service_card
+
+# WebP copies must exist before the page bodies below are built (img_tag checks for them).
+optimize_images()
 
 P = PHONE_TEL
 PD = PHONE_DISP
@@ -44,7 +48,7 @@ home_body = hiring_banner + f'''
         </div>
       </div>
       <div class="hero-mascot reveal in">
-        <img src="assets/img/mitch-hero.png" alt="Mitch, the Mitchell Plumbing &amp; Heating mascot, running with a wrench and toolbox" width="440" height="440" fetchpriority="high">
+        {img_tag("assets/img/mitch-hero.png", "Mitch, the Mitchell Plumbing &amp; Heating mascot, running with a wrench and toolbox", 440, 440, sizes="(max-width: 480px) calc(100vw - 44px), 440px", extra=' fetchpriority="high"')}
       </div>
     </div>
   </div>
@@ -89,7 +93,7 @@ home_body = hiring_banner + f'''
         <div class="story-card">
           <span class="story-tag">Our Story</span>
           <div class="story-inner">
-            <img class="story-mitch" src="assets/img/mitch-story.png" alt="Mitch the plumber pointing to the Mitchell Plumbing &amp; Heating company timeline" width="310" height="344" loading="lazy">
+            {img_tag("assets/img/mitch-story.png", "Mitch the plumber pointing to the Mitchell Plumbing &amp; Heating company timeline", 310, 344, extra=' class="story-mitch" loading="lazy"')}
             <ul class="story-timeline">
               <li class="tl-gold"><b>1990</b><span><strong>It all begins.</strong> A family opens Mitchell Plumbing &amp; Heating right here on N. Rowley Street.</span></li>
               <li class="tl-teal"><b>Grew</b><span>From small home repairs to major commercial &amp; government jobs &mdash; no job too big or small.</span></li>
@@ -147,12 +151,12 @@ home_body = hiring_banner + f'''
     </div>
     <div class="grid grid-2" style="align-items:start;margin-top:40px">
       <div class="quote-card reveal">
-        <div class="stars" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
+        <div class="stars" role="img" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
         <p>&ldquo;In an industry where reliability matters, Mitchell Plumbing &amp; Heating stands out. They consistently deliver quality workmanship, excellent communication, and dependable service from start to finish. We would confidently recommend them to anyone looking for a plumbing contractor they can trust.&rdquo;</p>
         <p class="quote-author">{TESTIMONIAL["author"]}<span>{TESTIMONIAL["org"]}</span></p>
       </div>
       <div class="quote-card reveal">
-        <div class="stars" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
+        <div class="stars" role="img" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
         <p>&ldquo;{TESTIMONIAL2["highlight"]}&rdquo;</p>
         <p class="quote-author">{TESTIMONIAL2["author"]}<span>{TESTIMONIAL2["org"]}</span></p>
       </div>
@@ -183,7 +187,7 @@ about_body = f'''
         </div>
       </div>
       <div class="split-media reveal">
-        <img src="assets/img/mph-building.jpg" alt="The Mitchell Plumbing &amp; Heating shop in Mitchell, SD" width="760" height="470" loading="lazy">
+        {img_tag("assets/img/mph-building.jpg", "The Mitchell Plumbing &amp; Heating shop in Mitchell, SD", 760, 470, extra=' loading="lazy"')}
       </div>
     </div>
   </div>
@@ -193,7 +197,7 @@ about_body = f'''
   <div class="container">
     <div class="split split--rev">
       <div class="split-media reveal">
-        <img src="assets/img/mitch-mascot-sheet.png" alt="Mitch the plumber mascot in friendly poses &mdash; waving hello, thumbs up, on his way, your comfort is my priority" width="700" height="700" loading="lazy" style="box-shadow:5px 5px 0 var(--navy);background:#fff">
+        {img_tag("assets/img/mitch-mascot-sheet.png", "Mitch the plumber mascot in friendly poses &mdash; waving hello, thumbs up, on his way, your comfort is my priority", 700, 700, extra=' loading="lazy" style="box-shadow:5px 5px 0 var(--navy);background:#fff"')}
       </div>
       <div class="reveal">
         <p class="eyebrow" style="color:#ffe9b0">Say Hello To</p>
@@ -219,7 +223,7 @@ about_body = f'''
 <section class="section">
   <div class="container" style="max-width:840px">
     <div class="quote-card reveal">
-      <div class="stars" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
+      <div class="stars" role="img" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
       <p>&ldquo;{TESTIMONIAL["body"]}&rdquo;</p>
       <p class="quote-author">{TESTIMONIAL["author"]}<span>{TESTIMONIAL["org"]}</span></p>
     </div>
@@ -276,7 +280,7 @@ services_body = f'''
             <text class="g-title" x="200" y="249" text-anchor="middle" font-size="37">TO YOU</text>
             <text class="g-est" x="200" y="281" text-anchor="middle" font-size="17">★ SINCE 1990 ★</text>
           </svg>
-          <img class="g-mitch" src="assets/img/mitch-thumb.png" alt="Mitch the plumber giving a thumbs up" width="300" height="360" loading="lazy">
+          {img_tag("assets/img/mitch-thumb.png", "Mitch the plumber giving a thumbs up", 300, 360, extra=' class="g-mitch" loading="lazy"')}
         </div>
       </div>
     </div>
@@ -300,7 +304,7 @@ def detail_intro(eyebrow, title, script, lead, bullets, img, alt, img_bg="", img
         <ul class="checks">{items}</ul>
         <a class="btn" href="contact.html">Get a Free Estimate</a>
       </div>
-      <div class="split-media reveal"><img src="{img}" alt="{alt}" width="{img_w}" height="{img_h}" loading="lazy" style="{img_bg}"></div>
+      <div class="split-media reveal">{img_tag(img, alt, img_w, img_h, sizes="(max-width: 879px) calc(100vw - 44px), 540px", extra=f' loading="lazy" style="{img_bg}"')}</div>
     </div>
   </div>
 </section>'''
@@ -386,7 +390,7 @@ residential_body = f'''
         </div>
       </div>
       <div class="split-media reveal" style="display:flex;justify-content:center">
-        <img src="assets/img/mitch-thumb.png" alt="Mitch the plumber mascot giving a thumbs up for residential services" width="300" height="360" loading="lazy" style="background:#fff;padding:26px 22px;max-width:320px;width:100%;height:auto">
+        {img_tag("assets/img/mitch-thumb.png", "Mitch the plumber mascot giving a thumbs up for residential services", 300, 360, extra=' loading="lazy" style="background:#fff;padding:26px 22px;max-width:320px;width:100%;height:auto"')}
       </div>
     </div>
     <div class="callout reveal" style="margin-top:44px">
@@ -477,7 +481,7 @@ boilers_body = (
         </div>
       </div>
       <div class="split-media reveal" style="display:grid;place-items:center;background:var(--navy);border:4px solid var(--navy);border-radius:26px;box-shadow:5px 5px 0 var(--coral-deep);padding:60px 44px">
-        <img src="assets/img/lochinvar-logo.png" alt="Lochinvar boiler systems logo" width="360" height="66" loading="lazy" style="border:none;box-shadow:none;border-radius:0;width:100%;max-width:360px;height:auto">
+        {img_tag("assets/img/lochinvar-logo.png", "Lochinvar boiler systems logo", 360, 66, extra=' loading="lazy" style="border:none;box-shadow:none;border-radius:0;width:100%;max-width:360px;height:auto"')}
         <p class="tag-area" style="margin:20px 0 0;text-align:center;color:#c5d2ee">High-Efficiency Boilers &amp; Water Heaters</p>
       </div>
     </div>
@@ -528,7 +532,7 @@ commercial_body = (
 <section class="section bg-cream2">
   <div class="container" style="max-width:860px">
     <div class="quote-card reveal">
-      <div class="stars" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
+      <div class="stars" role="img" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
       <p>&ldquo;{TESTIMONIAL["body"]}&rdquo;</p>
       <p class="quote-author">{TESTIMONIAL["author"]}<span>{TESTIMONIAL["org"]}</span></p>
     </div>
@@ -582,17 +586,17 @@ extra_reviews = [
 ]
 reviews_cards = f'''
 <div class="quote-card reveal" style="grid-column:1/-1">
-  <div class="stars" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
+  <div class="stars" role="img" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
   <p>&ldquo;{TESTIMONIAL["body"]}&rdquo;</p>
   <p class="quote-author">{TESTIMONIAL["author"]}<span>{TESTIMONIAL["org"]}</span></p>
 </div>
 <div class="quote-card reveal" style="grid-column:1/-1">
-  <div class="stars" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
+  <div class="stars" role="img" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
   <p>&ldquo;{TESTIMONIAL2["body"]}&rdquo;</p>
   <p class="quote-author">{TESTIMONIAL2["author"]}<span>{TESTIMONIAL2["org"]}</span></p>
 </div>
 <div class="quote-card reveal" style="grid-column:1/-1">
-  <div class="stars" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
+  <div class="stars" role="img" aria-label="5 out of 5 stars">{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}{IC["star"]}</div>
   <p>&ldquo;{TESTIMONIAL3["body"]}&rdquo;</p>
   <p class="quote-author">{TESTIMONIAL3["author"]}<span>{TESTIMONIAL3["org"]}</span></p>
 </div>'''
@@ -767,7 +771,7 @@ careers_body = f'''
         </div>
       </div>
       <div class="split-media reveal" style="display:flex;justify-content:center">
-        <img src="assets/img/mitch-thumb.png" alt="Mitch the plumber mascot giving a thumbs up &mdash; join the Mitchell Plumbing &amp; Heating team" width="300" height="360" loading="lazy" style="background:var(--cream);padding:26px 22px;max-width:320px;width:100%;height:auto">
+        {img_tag("assets/img/mitch-thumb.png", "Mitch the plumber mascot giving a thumbs up &mdash; join the Mitchell Plumbing &amp; Heating team", 300, 360, extra=' loading="lazy" style="background:var(--cream);padding:26px 22px;max-width:320px;width:100%;height:auto"')}
       </div>
     </div>
   </div>
@@ -971,4 +975,6 @@ for fname, cfg in PAGES:
     render(fname, cfg)
     print("  +", fname)
 
+write_llms_txt(PAGES)
+print("  + llms.txt")
 print("Rendered", len(PAGES), "pages.")

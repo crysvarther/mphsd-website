@@ -4,15 +4,18 @@ import os
 from build import (SITE_URL, BIZ_NAME, BIZ_ALT, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST,
                    ADDR_CITY, ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON,
                    AREAS, COUNTIES, TESTIMONIAL, IC, jsonld, breadcrumb_node,
-                   GBP_URL, FACEBOOK_URL, GA4_ID, GSC_VERIFICATION)
+                   GBP_URL, FACEBOOK_URL, GA4_ID, GSC_VERIFICATION, img_tag)
 
 # Emitted only when the IDs are set in build.py — otherwise pages stay 100% tracker-free.
 GSC_META = (f'\n<meta name="google-site-verification" content="{GSC_VERIFICATION}">'
             if GSC_VERIFICATION else "")
+# gtag.js is injected after the page has finished loading so analytics never
+# competes with fonts/images for bandwidth on phones. Events queued in dataLayer
+# before it arrives (including the page_view) are sent as soon as it loads.
 GA_SNIPPET = (f'''
-<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}
-gtag('js',new Date());gtag('config','{GA4_ID}');</script>''' if GA4_ID else "")
+gtag('js',new Date());gtag('config','{GA4_ID}');
+window.addEventListener('load',function(){{setTimeout(function(){{var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id={GA4_ID}';document.head.appendChild(s);}},1000);}});</script>''' if GA4_ID else "")
 
 # ----------------------------------------------------------------------------
 # Navigation
@@ -68,9 +71,10 @@ def head(title, desc, canonical, prefix, extra_schema=None, og_image="assets/img
 <link rel="apple-touch-icon" href="{prefix}assets/img/apple-touch-icon.png">
 <link rel="manifest" href="{prefix}site.webmanifest">
 <meta name="theme-color" content="#15294c">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="{prefix}assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{prefix}assets/fonts/oswald-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{prefix}assets/fonts/poppins-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{prefix}assets/fonts/pacifico-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{prefix}css/style.css">{GA_SNIPPET}
 {schema}
 </head>
@@ -98,8 +102,8 @@ def header(prefix):
   </div></div>
   <div class="container">
     <nav class="nav" aria-label="Primary">
-      <a class="brand" href="{prefix}index.html" aria-label="{BIZ_NAME} home">
-        <img src="{prefix}assets/img/mph-logo-header.png" alt="Mitchell Plumbing &amp; Heating logo with Mitch the plumber mascot" width="60" height="60">
+      <a class="brand" href="{prefix}index.html">
+        {img_tag("assets/img/mph-logo-header.png", "", 60, 60, prefix, sizes="60px")}
         <span class="brand-name">
           <span class="bn-name">Mitchell</span>
           <span class="bn-sub">Plumbing <span class="bn-amp">&amp;</span> Heating</span>
@@ -146,7 +150,7 @@ def footer(prefix):
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <img src="{prefix}assets/img/mph-logo.png" alt="Mitchell Plumbing &amp; Heating" width="64" height="64">
+          {img_tag("assets/img/mph-logo.png", "Mitchell Plumbing &amp; Heating", 64, 64, prefix, sizes="64px", extra=' loading="lazy"')}
           <span class="brand-name">
             <span class="bn-name">Mitchell</span>
             <span class="bn-sub">Plumbing <span class="bn-amp">&amp;</span> Heating</span>
@@ -155,10 +159,10 @@ def footer(prefix):
         <p style="color:#c5d2ee">Your local, family-owned plumbing &amp; heating team since {FOUNDED}. {SLOGAN}</p>
         <p class="pill" style="margin-top:6px">{IC["shield"]} Licensed &middot; Insured &middot; Trusted</p>
       </div>
-      <div><h4>Services</h4><ul class="footer-links">{serv}</ul></div>
-      <div><h4>Company</h4><ul class="footer-links">{comp}</ul></div>
+      <div><h3>Services</h3><ul class="footer-links">{serv}</ul></div>
+      <div><h3>Company</h3><ul class="footer-links">{comp}</ul></div>
       <div>
-        <h4>Get In Touch</h4>
+        <h3>Get In Touch</h3>
         <ul class="footer-links">
           <li>{IC["phone"]} <a href="tel:{PHONE_TEL}"><strong>{PHONE_DISP}</strong></a></li>
           <li>{IC["mail"]} <a href="mailto:{EMAIL}">{EMAIL}</a></li>

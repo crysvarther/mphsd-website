@@ -252,3 +252,93 @@ def breadcrumb_node(crumbs, prefix):
             el["item"] = SITE_URL + "/" + href
         items.append(el)
     return {"@type": "BreadcrumbList", "itemListElement": items}
+
+
+# ----------------------------------------------------------------------------
+# Responsive images. `python pages.py` calls optimize_images(), which writes a
+# WebP copy of each source at the listed widths (assets/img/<name>-<w>.webp);
+# img_tag() then emits <img srcset> pointing at them so phones download the
+# small copy and desktops the sharp one. Add a new photo here and re-run —
+# widths wider than the source are skipped automatically.
+# ----------------------------------------------------------------------------
+ROOT = os.path.dirname(os.path.abspath(__file__))
+IMAGE_VARIANTS = {
+    "assets/img/mitch-hero.png":              [440, 880],
+    "assets/img/mph-logo-header.png":         [60, 120],
+    "assets/img/mph-logo.png":                [64, 128],
+    "assets/img/mitch-story.png":             [310],
+    "assets/img/mitch-thumb.png":             [300],
+    "assets/img/mph-building.jpg":            [760, 1400],
+    "assets/img/mitch-mascot-sheet.png":      [700],
+    "assets/img/mitch-on-time.png":           [430],
+    "assets/img/mitch-quality-guaranteed.png":[450],
+    "assets/img/mitch-trusted-plumber.png":   [410],
+    "assets/img/lochinvar-logo.png":          [360, 720],
+}
+
+def variant_path(src, width):
+    stem, _ = os.path.splitext(src)
+    return "%s-%d.webp" % (stem, width)
+
+def optimize_images():
+    """Write WebP variants for IMAGE_VARIANTS (skips files already up to date)."""
+    try:
+        from PIL import Image
+    except ImportError:
+        print("  ! Pillow not installed (pip install pillow) - reusing existing WebP files")
+        return
+    for src, widths in IMAGE_VARIANTS.items():
+        path = os.path.join(ROOT, src)
+        if not os.path.exists(path):
+            print("  ! missing image:", src)
+            continue
+        im = Image.open(path)
+        for w in widths:
+            if w > im.width:
+                continue
+            out = os.path.join(ROOT, variant_path(src, w))
+            if os.path.exists(out) and os.path.getmtime(out) >= os.path.getmtime(path):
+                continue
+            r = im.copy()
+            r.thumbnail((w, 100000), Image.LANCZOS)
+            r.save(out, "WEBP", quality=82, method=6)
+            print("  ~ %s (%d KB)" % (variant_path(src, w), os.path.getsize(out) // 1024))
+
+def img_tag(src, alt, width, height, prefix="", sizes=None, extra=""):
+    """<img> with a WebP srcset when variants exist; plain <img> otherwise.
+    `sizes` describes the rendered width so the browser picks the right copy;
+    `extra` is raw attribute text (loading, fetchpriority, class, style...)."""
+    widths = [w for w in IMAGE_VARIANTS.get(src, [])
+              if os.path.exists(os.path.join(ROOT, variant_path(src, w)))]
+    if not widths:
+        return '<img src="%s%s" alt="%s" width="%s" height="%s"%s>' % (prefix, src, alt, width, height, extra)
+    srcset = ", ".join("%s%s %dw" % (prefix, variant_path(src, w), w) for w in widths)
+    sizes = sizes or "(max-width: %spx) calc(100vw - 44px), %spx" % (width, width)
+    return ('<img src="%s%s" srcset="%s" sizes="%s" alt="%s" width="%s" height="%s"%s>'
+            % (prefix, variant_path(src, widths[-1]), srcset, sizes, alt, width, height, extra))
+
+def write_llms_txt(pages):
+    """llms.txt - a short Markdown index of the site for AI agents and answer
+    engines (llmstxt.org). PageSpeed's "Agentic Browsing" check looks for it."""
+    lines = [
+        "# " + BIZ_NAME, "",
+        "> Family-owned plumbing & heating contractor in %s, South Dakota since %s. "
+        "Residential, commercial & government plumbing; hydronic & radiant heating; "
+        "Lochinvar boilers; commercial chillers. Free estimates. Call %s."
+        % (ADDR_CITY, FOUNDED, PHONE_DISP), "",
+        "## Key facts", "",
+        "- Phone: " + PHONE_DISP,
+        "- Email: " + EMAIL,
+        "- Address: %s, %s, %s %s" % (ADDR_ST, ADDR_CITY, ADDR_STATE, ADDR_ZIP),
+        "- Hours: Monday-Friday 8am-5pm",
+        "- Service area: %s and communities across Eastern South Dakota" % ", ".join(AREAS),
+        "- Slogan: " + SLOGAN, "",
+        "## Pages", "",
+    ]
+    for fname, cfg in pages:
+        if "noindex" in cfg.get("robots", ""):
+            continue
+        lines.append("- [%s](%s/%s): %s" % (cfg["title"], SITE_URL, fname, cfg["desc"]))
+    lines += ["", "## Optional", "", "- [Sitemap](%s/sitemap.xml): every URL on the site" % SITE_URL]
+    with open(os.path.join(ROOT, "llms.txt"), "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(lines) + "\n")
