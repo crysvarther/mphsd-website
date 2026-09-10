@@ -3,7 +3,7 @@
 import os
 from build import (SITE_URL, BIZ_NAME, BIZ_ALT, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST,
                    ADDR_CITY, ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON,
-                   AREAS, COUNTIES, TESTIMONIAL, IC, jsonld, breadcrumb_node,
+                   AREAS, COUNTIES, TESTIMONIAL, IC, jsonld, breadcrumb_node, canon_url,
                    GBP_URL, FACEBOOK_URL, GA4_ID, GSC_VERIFICATION, img_tag)
 
 # Emitted only when the IDs are set in build.py — otherwise pages stay 100% tracker-free.
@@ -38,7 +38,7 @@ NAV = [
 
 def head(title, desc, canonical, prefix, extra_schema=None, og_image="assets/img/mitch-hero.png",
          robots="index, follow, max-image-preview:large", og_type="website"):
-    full_canon = SITE_URL + "/" + canonical
+    full_canon = canon_url(canonical)
     schema = jsonld(extra_schema)
     return f'''<!DOCTYPE html>
 <html lang="en">

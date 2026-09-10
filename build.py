@@ -5,7 +5,7 @@ Run:  python build.py
 Outputs plain static HTML — host anywhere (Netlify, GitHub Pages, IIS, Apache).
 Editing content? Update the PAGES section near the bottom and re-run.
 """
-import json, os
+import json, os, hashlib, datetime
 
 # ----------------------------------------------------------------------------
 # Business facts (single source of truth — also drives JSON-LD structured data)
@@ -243,13 +243,22 @@ def jsonld(extra_nodes=None):
     data = {"@context": "https://schema.org", "@graph": graph}
     return '<script type="application/ld+json">%s</script>' % json.dumps(data, ensure_ascii=False)
 
+def canon_url(path):
+    """Absolute canonical URL for a page. A directory index canonicalizes to the
+    folder form (index.html -> /, blog/index.html -> /blog/) — that is the URL
+    the host serves by default and the one search engines settle on, so every
+    signal we emit (canonical, og:url, breadcrumbs, sitemap, llms.txt) uses it."""
+    if path.endswith("index.html"):
+        path = path[:-len("index.html")]
+    return SITE_URL + "/" + path
+
 def breadcrumb_node(crumbs, prefix):
     # crumbs: list of (name, href-or-None)
     items = []
     for i, (name, href) in enumerate(crumbs, 1):
         el = {"@type": "ListItem", "position": i, "name": name}
         if href:
-            el["item"] = SITE_URL + "/" + href
+            el["item"] = canon_url(href)
         items.append(el)
     return {"@type": "BreadcrumbList", "itemListElement": items}
 
@@ -338,7 +347,64 @@ def write_llms_txt(pages):
     for fname, cfg in pages:
         if "noindex" in cfg.get("robots", ""):
             continue
-        lines.append("- [%s](%s/%s): %s" % (cfg["title"], SITE_URL, fname, cfg["desc"]))
+        lines.append("- [%s](%s): %s" % (cfg["title"], canon_url(fname), cfg["desc"]))
     lines += ["", "## Optional", "", "- [Sitemap](%s/sitemap.xml): every URL on the site" % SITE_URL]
     with open(os.path.join(ROOT, "llms.txt"), "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(lines) + "\n")
+
+
+# ----------------------------------------------------------------------------
+# sitemap.xml. Generated from the same PAGES list the site renders from, so a
+# new page can never be forgotten here. <lastmod> is only bumped when a page's
+# rendered HTML actually changed — the hash of every page is kept in
+# sitemap-state.json (commit it) so a rebuild that changes nothing does not
+# tell Google the whole site was touched today.
+# ----------------------------------------------------------------------------
+SITEMAP_PRIORITY = {
+    "index.html":        ("weekly",  "1.0"),
+    "services.html":     ("monthly", "0.9"),
+    "residential.html":  ("monthly", "0.9"),
+    "plumbing.html":     ("monthly", "0.9"),
+    "heating.html":      ("monthly", "0.9"),
+    "boilers.html":      ("monthly", "0.9"),
+    "contact.html":      ("monthly", "0.9"),
+    "commercial.html":   ("monthly", "0.8"),
+    "service-area.html": ("monthly", "0.8"),
+    "about.html":        ("monthly", "0.7"),
+    "reviews.html":      ("monthly", "0.7"),
+    "faq.html":          ("monthly", "0.7"),
+    "blog/index.html":   ("weekly",  "0.6"),
+    "careers.html":      ("monthly", "0.5"),
+}
+SITEMAP_DEFAULT = ("yearly", "0.6")   # blog posts and anything new
+
+def write_sitemap(pages):
+    state_path = os.path.join(ROOT, "sitemap-state.json")
+    try:
+        with open(state_path, encoding="utf-8") as f:
+            state = json.load(f)
+    except (IOError, ValueError):
+        state = {}
+
+    today = datetime.date.today().isoformat()
+    urls, new_state = [], {}
+    for fname, cfg in pages:
+        if "noindex" in cfg.get("robots", ""):
+            continue
+        with open(os.path.join(ROOT, fname), "rb") as f:
+            digest = hashlib.sha256(f.read()).hexdigest()
+        prev = state.get(fname, {})
+        lastmod = prev.get("lastmod", today) if prev.get("hash") == digest else today
+        new_state[fname] = {"hash": digest, "lastmod": lastmod}
+        freq, pri = SITEMAP_PRIORITY.get(fname, SITEMAP_DEFAULT)
+        urls.append("  <url><loc>%s</loc><lastmod>%s</lastmod>"
+                    "<changefreq>%s</changefreq><priority>%s</priority></url>"
+                    % (canon_url(fname), lastmod, freq, pri))
+
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'] + urls + ['</urlset>']
+    with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(xml) + "\n")
+    with open(state_path, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(new_state, f, indent=2, sort_keys=True)
+        f.write("\n")
