@@ -252,6 +252,14 @@ def canon_url(path):
         path = path[:-len("index.html")]
     return SITE_URL + "/" + path
 
+def link_href(prefix, href):
+    """Site-relative href for an internal link. A directory index links to its
+    folder form so the link matches that page's canonical URL (see canon_url).
+    `prefix` is the climb back to site root ("" at root, "../" inside /blog/)."""
+    if href.endswith("index.html"):
+        href = href[:-len("index.html")]
+    return (prefix + href) or "./"
+
 def breadcrumb_node(crumbs, prefix):
     # crumbs: list of (name, href-or-None)
     items = []

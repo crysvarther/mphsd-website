@@ -882,7 +882,7 @@ thankyou_body = f'''
   <div class="seal center-block" style="margin-bottom:24px"><span><b>{IC["check"]}</b><small>On Its Way</small></span></div>
   <p class="lead center-block">Need help right now? Give us a call.</p>
   <a class="btn btn--lg" href="tel:{P}">{IC["phone"]} {PD}</a>
-  <p style="margin-top:24px"><a href="index.html">&larr; Back to Home</a></p>
+  <p style="margin-top:24px"><a href="./">&larr; Back to Home</a></p>
 </div></section>
 '''
 notfound_body = f'''
@@ -890,7 +890,7 @@ notfound_body = f'''
 <section class="section text-center"><div class="container" style="max-width:680px">
   <p class="lead center-block">Try one of these instead:</p>
   <div class="pill-row" style="justify-content:center;margin:20px 0 30px">
-    <a class="pill" href="index.html">{IC["check"]} Home</a>
+    <a class="pill" href="./">{IC["check"]} Home</a>
     <a class="pill" href="services.html">{IC["wrench"]} Services</a>
     <a class="pill" href="boilers.html">{IC["thermo"]} Boilers</a>
     <a class="pill" href="contact.html">{IC["phone"]} Contact</a>
