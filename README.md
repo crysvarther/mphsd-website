@@ -33,7 +33,8 @@ site/
 ├── js/main.js              Nav, accordion, scroll reveal, form, etc.
 ├── assets/img/             Logo, Mitch mascot art, building photo, favicon
 ├── build.py / make.py / pages.py   Page generator (see below)
-└── ANALYTICS.md            Metrics/KPI setup guide (GA4, Search Console, dashboard)
+├── ANALYTICS.md            Metrics/KPI setup guide (GA4, Search Console, dashboard)
+└── DNS.md                  DNS zone reference + change log (website AND email records)
 ```
 
 ## Editing content
@@ -101,6 +102,11 @@ all use `https://mphsd.com` (set as `SITE_URL` in `build.py`). To serve it there
 under **Settings → Pages → Custom domain**, create a `CNAME` file in this folder containing
 `mphsd.com`, and point your DNS at GitHub Pages. Until then the pages still work on the
 `github.io` URL — only the absolute canonical/OG links point at the production domain.
+
+> **Before touching DNS, read [`DNS.md`](DNS.md).** This domain also carries the company's
+> Microsoft 365 email, so the zone holds MX/SPF/DKIM/DMARC records that have nothing to do
+> with the website and must not be disturbed by a hosting change. `DNS.md` lists every
+> record, what it does, and a log of why each change was made.
 
 `.nojekyll` is included so GitHub Pages serves every file as-is (no Jekyll processing).
 
