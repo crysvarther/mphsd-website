@@ -3,7 +3,7 @@
 import os
 from build import (SITE_URL, BIZ_NAME, BIZ_ALT, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST,
                    ADDR_CITY, ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON,
-                   AREAS, COUNTIES, TESTIMONIAL, IC, jsonld, breadcrumb_node, canon_url,
+                   AREAS, COUNTIES, TESTIMONIAL, IC, jsonld, breadcrumb_node, canon_url, link_href,
                    GBP_URL, FACEBOOK_URL, GA4_ID, GSC_VERIFICATION, img_tag)
 
 # Emitted only when the IDs are set in build.py — otherwise pages stay 100% tracker-free.
@@ -82,11 +82,12 @@ def head(title, desc, canonical, prefix, extra_schema=None, og_image="assets/img
 <a class="skip-link" href="#main">Skip to content</a>'''
 
 def header(prefix):
+    home = link_href(prefix, "index.html")
     items = []
     for label, href, sub in NAV:
-        h = prefix + href
+        h = link_href(prefix, href)
         if sub:
-            subs = "".join(f'<li><a href="{prefix}{s_href}">{s_label}</a></li>' for s_label, s_href in sub)
+            subs = "".join(f'<li><a href="{link_href(prefix, s_href)}">{s_label}</a></li>' for s_label, s_href in sub)
             items.append(f'<li class="has-sub"><a href="{h}">{label}</a><ul class="submenu">{subs}</ul></li>')
         else:
             items.append(f'<li><a href="{h}">{label}</a></li>')
@@ -102,7 +103,7 @@ def header(prefix):
   </div></div>
   <div class="container">
     <nav class="nav" aria-label="Primary">
-      <a class="brand" href="{prefix}index.html">
+      <a class="brand" href="{home}">
         {img_tag("assets/img/mph-logo-header.png", "", 60, 60, prefix, sizes="60px")}
         <span class="brand-name">
           <span class="bn-name">Mitchell</span>
@@ -134,12 +135,12 @@ def cta_band(prefix):
 </section>'''
 
 def footer(prefix):
-    serv = "".join(f'<li><a href="{prefix}{h}">{l}</a></li>' for l, h in [
+    serv = "".join(f'<li><a href="{link_href(prefix, h)}">{l}</a></li>' for l, h in [
         ("Residential Services","residential.html"),("Residential Plumbing","plumbing.html"),
         ("Heating & Hydronics","heating.html"),("Lochinvar Boilers","boilers.html"),
         ("Fixtures & Product Lines","residential.html"),("Commercial Chillers","commercial.html"),
         ("Commercial & Government","commercial.html"),("Sewer Line Service","plumbing.html")])
-    comp = "".join(f'<li><a href="{prefix}{h}">{l}</a></li>' for l, h in [
+    comp = "".join(f'<li><a href="{link_href(prefix, h)}">{l}</a></li>' for l, h in [
         ("About Us","about.html"),("Service Area","service-area.html"),("Reviews","reviews.html"),
         ("FAQ","faq.html"),("Blog","blog/index.html"),("Careers","careers.html"),
         ("Contact","contact.html")])
@@ -197,7 +198,7 @@ def floating(prefix):
 def breadcrumb_html(crumbs, prefix):
     parts = []
     for name, href in crumbs:
-        parts.append(f'<a href="{prefix}{href}">{name}</a>' if href else f'<span>{name}</span>')
+        parts.append(f'<a href="{link_href(prefix, href)}">{name}</a>' if href else f'<span>{name}</span>')
     inner = '<span class="sep">/</span>'.join(parts)
     return f'<div class="bg-cream2"><div class="container"><nav class="breadcrumb" aria-label="Breadcrumb">{inner}</nav></div></div>'
 
