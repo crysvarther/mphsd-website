@@ -6,7 +6,7 @@ from build import (SITE_URL, BIZ_NAME, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST, AD
                    TESTIMONIAL, TESTIMONIAL2, TESTIMONIAL3, IC, FORMSPREE_ID, FORM_UPLOADS,
                    HIRING_BANNER_ON, HIRING_BANNER_TEXT, HIRING_BANNER_CTA,
                    HIRING_BANNER_LINK, GBP_REVIEW_URL)
-from build import img_tag, optimize_images, write_llms_txt
+from build import img_tag, optimize_images, write_llms_txt, write_sitemap
 from make import render, page_hero, service_card
 
 # WebP copies must exist before the page bodies below are built (img_tag checks for them).
@@ -923,7 +923,7 @@ PAGES = [
     canonical="plumbing.html", body=plumbing_body, crumbs=cr(HOME,("Services","services.html"),("Plumbing",None)),
     schema=[{"@type":"Service","name":"Plumbing Services","serviceType":"Plumbing","provider":{"@id":SITE_URL+"/#business"},"areaServed":{"@type":"City","name":"Mitchell, SD"}}])),
  ("residential.html", dict(title="Residential Services & Product Lines | Mitchell, SD",
-    desc="Residential plumbing, heating & fixtures in Mitchell, SD. Browse product lines from Moen, Delta, Kohler, Onyx, Gerber, Salo, Sterling & American Standard — we quote, order & install.",
+    desc="Residential plumbing, heating & fixtures in Mitchell, SD. Moen, Delta, Kohler, Onyx, Gerber & more — we quote, order & install. Free estimates.",
     canonical="residential.html", body=residential_body, schema=residential_schema,
     crumbs=cr(HOME,("Services","services.html"),("Residential Services",None)))),
  ("heating.html", dict(title="Heating & Hydronic Systems in Mitchell, SD | Boilers",
@@ -977,4 +977,6 @@ for fname, cfg in PAGES:
 
 write_llms_txt(PAGES)
 print("  + llms.txt")
+write_sitemap(PAGES)
+print("  + sitemap.xml")
 print("Rendered", len(PAGES), "pages.")
