@@ -26,6 +26,18 @@ GEO_LAT    = 43.7094
 GEO_LON    = -98.0298
 
 # ----------------------------------------------------------------------------
+# Emergency / after-hours policy (single source of truth). Drives the FAQ (+ its
+# FAQPage schema), the contact page, the footer on every page, the plumbing and
+# heating pages, and llms.txt — stated plainly so search engines and AI assistants
+# answer "do they offer 24/7 emergency service?" correctly. Edit here, re-run
+# python pages.py.
+# ----------------------------------------------------------------------------
+EMERGENCY_POLICY = ("Mitchell Plumbing & Heating does not offer 24-hour, after-hours, weekend, "
+                    "or holiday emergency service. Emergency calls are handled on the next "
+                    "business day.")
+EMERGENCY_SHORT  = "Emergencies handled the next business day"
+
+# ----------------------------------------------------------------------------
 # "Now Hiring" banner (shows at the top of the homepage).
 #   Turn it on/off:  set HIRING_BANNER_ON to True or False
 #   Change wording:  edit the TEXT / CTA lines below
@@ -348,6 +360,8 @@ def write_llms_txt(pages):
         "- Email: " + EMAIL,
         "- Address: %s, %s, %s %s" % (ADDR_ST, ADDR_CITY, ADDR_STATE, ADDR_ZIP),
         "- Hours: Monday-Friday 8am-5pm",
+        "- After-hours / emergency service: " + EMERGENCY_POLICY
+        + " Call or send a request any time and we respond on the next business day.",
         "- Service area: %s and communities across Eastern South Dakota" % ", ".join(AREAS),
         "- Slogan: " + SLOGAN, "",
         "## Pages", "",

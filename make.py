@@ -4,7 +4,7 @@ import os
 from build import (SITE_URL, BIZ_NAME, BIZ_ALT, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST,
                    ADDR_CITY, ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON,
                    AREAS, COUNTIES, TESTIMONIAL, IC, jsonld, breadcrumb_node, canon_url, link_href,
-                   GBP_URL, FACEBOOK_URL, GA4_ID, GSC_VERIFICATION, img_tag)
+                   GBP_URL, FACEBOOK_URL, GA4_ID, GSC_VERIFICATION, img_tag, EMERGENCY_SHORT)
 
 # Emitted only when the IDs are set in build.py — otherwise pages stay 100% tracker-free.
 GSC_META = (f'\n<meta name="google-site-verification" content="{GSC_VERIFICATION}">'
@@ -168,7 +168,7 @@ def footer(prefix):
           <li>{IC["phone"]} <a href="tel:{PHONE_TEL}"><strong>{PHONE_DISP}</strong></a></li>
           <li>{IC["mail"]} <a href="mailto:{EMAIL}">{EMAIL}</a></li>
           <li>{IC["pin"]} {ADDR_ST}<br><span style="padding-left:28px">{ADDR_CITY}, {ADDR_STATE} {ADDR_ZIP}</span></li>
-          <li>{IC["clock"]} Mon&ndash;Fri 8am&ndash;5pm</li>
+          <li>{IC["clock"]} Mon&ndash;Fri 8am&ndash;5pm<span style="display:block;padding-left:28px">{EMERGENCY_SHORT}</span></li>
         </ul>
         <div class="footer-soc" style="margin-top:8px">
           <a href="{GBP_URL or 'https://www.google.com/search?q=Mitchell+Plumbing+and+Heating+Mitchell+SD'}" aria-label="Find us on Google" title="Google">{IC["google"]}</a>
