@@ -819,9 +819,9 @@ careers_schema = [{
 # Newest first — the blog index lists them in this order.
 POSTS = [
   {"slug":"blog/fall-plumbing-heating-checklist-mitchell-sd.html",
-   "title":"Before the First Hard Freeze: Mitch's Fall Checklist for Your Plumbing and Heating",
+   "title":"Before the First Hard Freeze: The Team's Fall Checklist for Your Plumbing and Heating",
    "seo_title":"Fall Plumbing & Heating Checklist for Mitchell, SD Homes | Mitchell P&H",
-   "desc":"Get your Mitchell home ready for a South Dakota winter. Mitch's fall checklist covers boilers, radiant heat, water heaters, frozen pipes, and more.",
+   "desc":"Get your Mitchell home ready for a South Dakota winter. The team's fall checklist covers boilers, radiant heat, water heaters, frozen pipes, and more.",
    "date":"2026-09-24","date_disp":"September 24, 2026",
    "tag":"Heating &amp; Plumbing","icon":"wrench",
    "crumb":"Fall Checklist",
