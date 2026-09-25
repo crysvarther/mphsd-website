@@ -814,20 +814,31 @@ careers_schema = [{
 }]
 
 # ============================================================================
-# BLOG INDEX + first post
+# BLOG INDEX + posts
 # ============================================================================
+# Newest first — the blog index lists them in this order.
 POSTS = [
+  {"slug":"blog/fall-plumbing-heating-checklist-mitchell-sd.html",
+   "title":"Before the First Hard Freeze: Mitch's Fall Checklist for Your Plumbing and Heating",
+   "seo_title":"Fall Plumbing & Heating Checklist for Mitchell, SD Homes | Mitchell P&H",
+   "desc":"Get your Mitchell home ready for a South Dakota winter. Mitch's fall checklist covers boilers, radiant heat, water heaters, frozen pipes, and more.",
+   "date":"2026-09-24","date_disp":"September 24, 2026",
+   "tag":"Heating &amp; Plumbing","icon":"wrench",
+   "crumb":"Fall Checklist",
+   "excerpt":"A few hours of prep now can save you a cold house, a flooded basement, and a big repair bill later. Here's what to check this fall, what you can handle yourself, and when to call in a pro."},
   {"slug":"blog/hydronic-heating-south-dakota-winters.html",
    "title":"Why Hydronic Heating Is the Smart Choice for South Dakota Winters",
    "seo_title":"Hydronic Heating for South Dakota Winters | Mitchell P&H",
    "desc":"Even, efficient, draft-free warmth: how hydronic and radiant in-floor heating keep Mitchell-area homes cozy all winter — and save on energy bills.",
    "date":"2026-05-22","date_disp":"May 22, 2026",
+   "tag":"Heating","icon":"flame",
+   "crumb":"Hydronic Heating",
    "excerpt":"If you've ever walked across a cold tile floor on a January morning in Mitchell, you already understand the appeal of radiant heat. Here's how hydronic systems work and why they're worth it."},
 ]
 def blog_card(p, prefix=""):
     return f'''<article class="card reveal">
-      <div class="card-icon card--coral" style="background:var(--coral)">{IC["flame"]}</div>
-      <p class="tag-area" style="margin-bottom:6px">{p["date_disp"]} &middot; Heating</p>
+      <div class="card-icon card--coral" style="background:var(--coral)">{IC[p["icon"]]}</div>
+      <p class="tag-area" style="margin-bottom:6px">{p["date_disp"]} &middot; {p["tag"]}</p>
       <h3>{p["title"]}</h3>
       <p>{p["excerpt"]}</p>
       <a class="card-link" href="{prefix}{p["slug"].split("/")[-1]}">Read Article</a>
@@ -846,7 +857,7 @@ blog_index_body = f'''
 </section>
 '''
 
-post0 = POSTS[0]
+post0 = POSTS[1]
 post_body = f'''
 <article>
 <section class="page-hero">
@@ -878,16 +889,161 @@ post_body = f'''
 </section>
 </article>
 '''
-post_schema = [{
-  "@type":"BlogPosting","@id":SITE_URL+"/"+post0["slug"],
-  "headline":post0["title"],"description":post0["desc"],
-  "datePublished":post0["date"],"dateModified":post0["date"],
-  "image":SITE_URL+"/assets/img/mitch-hero.png",
-  "author":{"@type":"Organization","name":BIZ_NAME},
-  "publisher":{"@id":SITE_URL+"/#business"},
-  "mainEntityOfPage":SITE_URL+"/"+post0["slug"],
-  "inLanguage":"en-US"
-}]
+def blog_posting_schema(p):
+    return [{
+      "@type":"BlogPosting","@id":SITE_URL+"/"+p["slug"],
+      "headline":p["title"],"description":p["desc"],
+      "datePublished":p["date"],"dateModified":p["date"],
+      "image":SITE_URL+"/assets/img/mitch-hero.png",
+      "author":{"@type":"Organization","name":BIZ_NAME},
+      "publisher":{"@id":SITE_URL+"/#business"},
+      "mainEntityOfPage":SITE_URL+"/"+p["slug"],
+      "inLanguage":"en-US"
+    }]
+post_schema = blog_posting_schema(post0)
+
+post1 = POSTS[0]
+fall_body = f'''
+<article>
+<section class="page-hero">
+  <div class="container" style="max-width:820px">
+    <p class="eyebrow" style="color:#ffd98a">{post1["tag"]} &middot; <time datetime="{post1["date"]}">{post1["date_disp"]}</time></p>
+    <h1>{post1["title"]}</h1>
+    <p>By the team at {BIZ_NAME}</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container" style="max-width:760px">
+    <div class="post-body maxw-prose center-block">
+      <p class="lead">The combines are rolling, the Corn Palace has its new look, and somewhere in your basement a boiler that&apos;s been napping since May is about to be asked to work around the clock.</p>
+      <p>Think of fall like the pre-season for your home. No coach sends a team into the opening game without practice, and you don&apos;t want your heating system&apos;s first real workout to be a -15&deg; night in January. A few hours of prep now, while it&apos;s still comfortable outside, can save you a cold house, a flooded basement, and a big repair bill later.</p>
+      <p>Here&apos;s what to check this fall, what you can handle yourself, and when to call the team.</p>
+
+      <h2 class="section-title"><span class="step">1.</span>Your boiler has been sleeping all summer. Wake it up gently.</h2>
+      <p>Most of us flip the heat on the first chilly morning and walk away. That&apos;s a lot to ask of equipment that hasn&apos;t run in months.</p>
+      <p>Over the summer, dust settles in, parts sit idle, and small problems stay hidden until the system has to work hard. A fall tune-up is like a physical before a season of hard work: it finds the small stuff before it becomes the big stuff. For a boiler, that means checking burners and combustion, looking at the venting, testing safety controls, and making sure the system pressure and circulator pumps are right.</p>
+      <p>This matters even more for high-efficiency boilers like the <a href="../boilers.html">Lochinvar units we install</a>. They&apos;re built to squeeze the most heat out of every bit of fuel, and they run best when they&apos;re kept clean and dialed in.</p>
+      <div class="post-move">
+        <p><span class="label">Your move this week:</span> Turn your heat on for a test run <em>before</em> you need it. Listen for new banging, whistling, or clicking, and look for water around the boiler or pipes. Then schedule a professional tune-up, since fall appointments fill up fast once the first cold snap hits.</p>
+      </div>
+      <blockquote class="post-quote">
+        <p>&ldquo;Is my boiler at the right pressure?&rdquo; &ldquo;Do I need to bleed the air from my system?&rdquo;</p>
+        <footer>The questions the Mitchell Plumbing &amp; Heating team hears most on fall boiler calls</footer>
+      </blockquote>
+
+      <h2 class="section-title"><span class="step">2.</span>Radiant and hydronic heat: the quiet system that still needs a checkup</h2>
+      <p>If you have radiant in-floor heat or hot water baseboard, you already know how nice it is. (If you&apos;re thinking about it, our post on <a href="hydronic-heating-south-dakota-winters.html">why hydronic heating is the smart choice for South Dakota winters</a> covers why.) Because these systems are so quiet, though, it&apos;s easy to forget they&apos;re there until something goes wrong.</p>
+      <p>A hydronic system is a closed loop, a bit like the cooling system in your truck. It needs the right amount of water, the right pressure, and no air bubbles in the lines. Air in the system is the most common fall complaint: one room or zone stays cool while everything else heats normally, or you hear gurgling in the pipes.</p>
+      <div class="post-move">
+        <p><span class="label">Your move this week:</span> Walk through the house with the heat on. Is every zone warming up? Are any baseboard units cold at one end? Is the pressure gauge on your boiler in the same range it was last winter?</p>
+        <p>If you have older radiators or baseboard with bleed valves and you&apos;re comfortable doing it, bleeding trapped air can help. For radiant floors, zone valves, or pressure that keeps dropping, <a href="../heating.html">call a pro</a>. Those usually point to something that needs a closer look.</p>
+      </div>
+
+      <h2 class="section-title"><span class="step">3.</span>The garden hose you forgot can cost you thousands</h2>
+      <p>It happens every year. The hose stays connected to the outside faucet through the first hard freeze, water trapped inside freezes, and a pipe splits inside the wall where nobody can see it. Often nobody finds it until spring, when the faucet gets turned on again and water starts running into the basement.</p>
+      <p>Here&apos;s why that matters. Water expands by roughly 9% when it freezes, putting pressure on pipes that they can&apos;t handle. And the bill can be huge.</p>
+      <p class="post-stat">State Farm reports more than 20,000 frozen pipe claims in 2024&ndash;25, with an average payout of over $30,000.</p>
+      <p>Most of that cost isn&apos;t the pipe. It&apos;s the drywall, flooring, and belongings the water ruins.</p>
+      <div class="post-move">
+        <p class="label">Your move this week:</p>
+        <ul>
+          <li>Disconnect and drain every garden hose.</li>
+          <li>If your home has shut-off valves for the outside faucets, close them from inside and open the outside faucet to let the line drain.</li>
+          <li>If you have frost-free hydrants, still take the hose off. A connected hose can keep water in the line and defeat the purpose.</li>
+          <li>Drain and shut down lawn sprinkler lines if you have them.</li>
+        </ul>
+      </div>
+      <p>Not sure where your outdoor shut-offs are? That&apos;s a good question to ask during a fall service visit.</p>
+
+      <h2 class="section-title"><span class="step">4.</span>Your water heater is about to earn its paycheck</h2>
+      <p>Cold weather means colder incoming water, which means your water heater works harder all winter. It&apos;s a bigger part of your energy costs than most people think.</p>
+      <p class="post-stat">The Department of Energy found that water heating makes up about 18% of the average family&apos;s utility bill, the second-largest energy expense in the home.</p>
+      <p>The enemy here is sediment. Minerals settle at the bottom of the tank over time and form a layer between the burner or element and the water, like trying to boil a pot of water with a blanket on the bottom. Your water heater burns more energy to do the same job, and the tank wears out sooner.</p>
+      <div class="post-move">
+        <p class="label">Your move this week:</p>
+        <ul>
+          <li><strong>Flush a little sediment.</strong> Draining some water from the bottom spigot once a year helps clear out sediment that slows heating and adds to tank corrosion. Be careful, because that water is hot.</li>
+          <li><strong>Check the temperature.</strong> Around 120&deg;F works well for most homes. Each 10-degree reduction can cut water heating costs by up to 5%.</li>
+          <li><strong>Look for warning signs.</strong> Rust-colored water, rumbling or popping noises, or moisture around the base mean it&apos;s time for a professional to take a look, before the tank fails on a holiday weekend.</li>
+        </ul>
+      </div>
+
+      <h2 class="section-title"><span class="step">5.</span>Find the weak spots before winter does</h2>
+      <p>Every house has spots where the pipes are more exposed than they should be. Winter finds those spots fast.</p>
+      <p>The usual problem areas are pipes along outside walls, in unheated garages and crawl spaces, under sinks on exterior walls, and anywhere cold air gets in around the foundation or rim joist. If a pipe froze last winter, it&apos;s likely to freeze again unless something changes.</p>
+      <p>There&apos;s also an insurance reason to take this seriously. Claims can be denied if the home was left without heat, sat vacant too long without proper precautions, or had maintenance problems that were ignored. Prevention protects both your home and your coverage.</p>
+      <div class="post-move">
+        <p class="label">Your move this week:</p>
+        <ul>
+          <li>Insulate exposed pipes in unheated spaces. Foam pipe sleeves from the hardware store are inexpensive and easy to install.</li>
+          <li>Seal gaps where cold air gets in near plumbing.</li>
+          <li><strong>Find your main water shut-off and make sure everyone in the house knows where it is.</strong> If a pipe bursts, shutting off the water in the first few minutes is the biggest thing you can do to limit damage. Make sure the valve actually turns. Old ones can seize up.</li>
+          <li>Heading south for part of the winter? Keep the heat on, have someone check the house regularly, and talk to us about draining lines or other ways to protect an empty home.</li>
+        </ul>
+      </div>
+
+      <h2 class="section-title"><span class="step">6.</span>Fix the sewer line while the ground is still soft</h2>
+      <p>Nobody thinks about the sewer line until it backs up. But fall is the best time to deal with a slow or troublesome line, for a simple reason: digging is much easier before the ground freezes.</p>
+      <p>If your drains have been sluggish, you&apos;ve had a backup or two, or you have an older home with big trees in the yard, a camera inspection can show what&apos;s happening underground. It&apos;s like getting an X-ray before surgery: you see the problem before anyone starts digging. We have our own excavating equipment for <a href="../plumbing.html">sewer and water line work</a>, so if a repair is needed, fall is a much better time to do it than the middle of January.</p>
+      <div class="post-move">
+        <p><span class="label">Your move this week:</span> Pay attention to your drains. Gurgling toilets, slow drains on the lowest level, or water backing up into a floor drain when the washer empties are all signs to get the line checked before winter.</p>
+      </div>
+      <blockquote class="post-quote">
+        <p>&ldquo;Essentially, it just takes a little longer to repair due to the frozen ground. Thankfully, we have a ground thaw unit that helps to speed the process of digging.&rdquo;</p>
+        <footer>&mdash; The Mitchell Plumbing &amp; Heating team</footer>
+      </blockquote>
+
+      <h2 class="section-title"><span class="step">7.</span>The five-minute safety check that matters most</h2>
+      <p>This one isn&apos;t about comfort or saving money. It&apos;s about keeping your family safe.</p>
+      <p>Any appliance that burns fuel, including boilers, furnaces, gas water heaters, and ranges, can produce carbon monoxide if something goes wrong with combustion or venting. You can&apos;t see, smell, or taste it.</p>
+      <p class="post-stat">According to the CDC, carbon monoxide poisoning kills more than 400 people in the U.S. every year, and slightly more than half of CO poisonings happen between November and February.</p>
+      <div class="post-move">
+        <p class="label">Your move this week:</p>
+        <ul>
+          <li>Test every carbon monoxide detector and replace the batteries.</li>
+          <li>Check the date on each detector. They wear out, and most list a replacement date on the back.</li>
+          <li>Make sure there&apos;s a CO detector on every level of your home and near sleeping areas.</li>
+          <li>Keep the area around your boiler and water heater clear, and don&apos;t store paint cans, gas cans, or clutter against them.</li>
+          <li>Once snow starts, keep outdoor vents and intake pipes clear, especially for high-efficiency boilers that vent out the side of the house.</li>
+        </ul>
+      </div>
+      <p>If a detector goes off, get everyone outside first and call for help from there.</p>
+
+      <section class="post-checklist" aria-labelledby="checklist-title">
+        <h2 class="section-title" id="checklist-title">Your fall checklist at a glance</h2>
+        <ul class="checks">
+          <li>Test-run your heat before the first cold snap</li>
+          <li>Schedule a boiler tune-up</li>
+          <li>Check every radiant or hydronic zone for even heat</li>
+          <li>Disconnect hoses and drain outdoor faucets</li>
+          <li>Flush sediment from your water heater and check the temperature</li>
+          <li>Insulate exposed pipes and seal cold spots</li>
+          <li>Find and test your main water shut-off</li>
+          <li>Watch for signs of sewer line trouble</li>
+          <li>Test and replace carbon monoxide detectors</li>
+        </ul>
+      </section>
+
+      <h2 class="section-title">Winter is coming. Your house can be ready.</h2>
+      <p>South Dakota winters don&apos;t give much warning. One week you&apos;re raking leaves, and the next you&apos;re scraping the windshield at 7 a.m. The good news is that most winter plumbing and heating emergencies can be prevented with a little attention in the fall.</p>
+      <p>Pick one or two items off this list this weekend. Then, for the jobs that need a trained eye, like boiler tune-ups, radiant system checks, sewer line inspections, or anything that doesn&apos;t look or sound right, give us a call.</p>
+      <p>Mitchell Plumbing &amp; Heating has been keeping homes and businesses in Mitchell and across Eastern South Dakota warm since {FOUNDED}. When you call, you get a real local technician, not a call center.</p>
+      <p><strong>Call the team at <a href="tel:{P}">{PD}</a></strong> (Mon&ndash;Fri, 8 a.m.&ndash;5 p.m.) or <a href="../contact.html">request a free estimate</a>.</p>
+
+      <div class="post-sources">
+        <h3>Sources</h3>
+        <ul>
+          <li>State Farm frozen pipe claims data, as reported by <a href="https://www.29news.com/2026/01/28/extreme-cold-can-cause-frozen-pipes-costly-damage/" rel="noopener">29 News (January 2026)</a></li>
+          <li>U.S. Department of Energy, <a href="https://www.energy.gov/energysaver/projects/savings-project-lower-water-heating-temperature" rel="noopener">Lower Water Heating Temperature</a></li>
+          <li>CDC, <a href="https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5650a1.htm" rel="noopener">Carbon Monoxide&ndash;Related Deaths, United States</a> and <a href="https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6030a2.htm" rel="noopener">Carbon Monoxide Exposures, United States, 2000&ndash;2009</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</article>
+'''
+fall_schema = blog_posting_schema(post1)
 
 # ============================================================================
 # THANK-YOU + 404
@@ -984,7 +1140,11 @@ PAGES = [
  (post0["slug"], dict(title=post0["seo_title"],
     desc=post0["desc"], canonical=post0["slug"], body=post_body, prefix="../", schema=post_schema,
     og_type="article", og_image="assets/img/mitch-hero.png",
-    crumbs=cr(HOME,("Blog","blog/index.html"),("Hydronic Heating",None)))),
+    crumbs=cr(HOME,("Blog","blog/index.html"),(post0["crumb"],None)))),
+ (post1["slug"], dict(title=post1["seo_title"],
+    desc=post1["desc"], canonical=post1["slug"], body=fall_body, prefix="../", schema=fall_schema,
+    og_type="article", og_image="assets/img/mitch-hero.png",
+    crumbs=cr(HOME,("Blog","blog/index.html"),(post1["crumb"],None)))),
 ]
 
 for fname, cfg in PAGES:

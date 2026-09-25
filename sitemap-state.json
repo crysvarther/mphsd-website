@@ -1,62 +1,66 @@
 {
   "about.html": {
     "hash": "6ae19130f70b60f69c581830a2ed5e5dedd81cf2d0038ca0042437cfb9dce3f1",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
+  },
+  "blog/fall-plumbing-heating-checklist-mitchell-sd.html": {
+    "hash": "723b09c7441eb97e5d01579833d79dd57e7035029513b7ea0f112369e3f7258d",
+    "lastmod": "2026-09-25"
   },
   "blog/hydronic-heating-south-dakota-winters.html": {
     "hash": "1d2239e9f6af1b7914264710fb288f9e5b4c24451b135040a33d17966f6434da",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "blog/index.html": {
-    "hash": "a96f025d7ec4335a50b20174bee2b68921a248025edec575484577895c7d36c3",
-    "lastmod": "2026-09-16"
+    "hash": "5692f5b7f2d2650a589fa12c7f9c81ee44ae8892cd2c7136072c00a412d280a4",
+    "lastmod": "2026-09-25"
   },
   "boilers.html": {
     "hash": "a9d1890f87370c12a47fc4dd10f7cfec482f5d1c11af48842a856a771dc46774",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "careers.html": {
     "hash": "c6de0d76d5fdfa3da7c5a1fed870e341aaed21b064e33719e92af2cb91628c18",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "commercial.html": {
     "hash": "2f2125355f8abbb2c81bf56a970e997431c5b169a001c911d616464a0783a28d",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "contact.html": {
     "hash": "408770a4ab53271eb5e7878d78b80b3a96ea54f221d3b1acc98f85f037f56078",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "faq.html": {
     "hash": "9d1a61b92628b9bc3a9721fec666825f0ffc14a3428827a26d7ae1b67d4c8686",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "heating.html": {
     "hash": "4fb793e65024f9dce057f948a04093908e828b437e224aa88989999f0bbbd5fb",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "index.html": {
     "hash": "3205131bcbee65f360023f5625111219ff55f6bd1fa99cf8aa0eebe917980114",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "plumbing.html": {
     "hash": "a0a1b14c92937b33e60541b87030e9dda9b3d8d1f67315d03facee65f53a6a96",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "residential.html": {
     "hash": "68c70ab46b6e904915fcce8dc9600131eae042ce88f4f479731e5b112618a99c",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "reviews.html": {
     "hash": "e99b3b4c7bce31f9bdb1d8ce995107d98d544f27edcc82a702c5d42950c859dc",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "service-area.html": {
     "hash": "09573cd2b194ecf603473ac434b6234520b005c4eda1ebf8fe8f73d3b3d082f2",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   },
   "services.html": {
     "hash": "83666c644f0147e4d74ecaa99d3b23b9e88fd5f5dfde4945208b68ec738b0e0d",
-    "lastmod": "2026-09-16"
+    "lastmod": "2026-09-25"
   }
 }
