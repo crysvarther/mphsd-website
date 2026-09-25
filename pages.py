@@ -5,7 +5,7 @@ from build import (SITE_URL, BIZ_NAME, PHONE_DISP, PHONE_TEL, EMAIL, ADDR_ST, AD
                    ADDR_STATE, ADDR_ZIP, SLOGAN, FOUNDED, GEO_LAT, GEO_LON, AREAS, COUNTIES,
                    TESTIMONIAL, TESTIMONIAL2, TESTIMONIAL3, IC, FORMSPREE_ID, FORM_UPLOADS,
                    HIRING_BANNER_ON, HIRING_BANNER_TEXT, HIRING_BANNER_CTA,
-                   HIRING_BANNER_LINK, GBP_REVIEW_URL)
+                   HIRING_BANNER_LINK, GBP_REVIEW_URL, EMERGENCY_POLICY)
 from build import img_tag, optimize_images, write_llms_txt, write_sitemap
 from make import render, page_hero, service_card
 
@@ -321,6 +321,16 @@ def services_grid(title, eyebrow, cards, bg="bg-dots"):
   </div>
 </section>'''
 
+def emergency_note():
+    """Short after-hours policy block for the service pages (see EMERGENCY_POLICY in build.py)."""
+    return f'''
+<section class="section--tight bg-cream2">
+  <div class="container text-center">
+    <p class="eyebrow">Emergencies &amp; After-Hours Calls</p>
+    <p class="lead center-block"><strong>{EMERGENCY_POLICY.replace('&', '&amp;')}</strong> Call {TEL} or <a href="contact.html">send a request</a> any time and we&apos;ll get you on the schedule for the next business day. Our <a href="faq.html">FAQ</a> covers what to do in the meantime.</p>
+  </div>
+</section>'''
+
 # PLUMBING
 plumbing_body = (
   page_hero("Plumbing Services in Mitchell, SD", "From a leaky faucet to a full repipe &mdash; residential and commercial plumbing done fast, reliable, and clean.", "Leaks, water heaters &amp; more")
@@ -343,6 +353,7 @@ plumbing_body = (
       ("tools","Sewer Line Trouble","Aging or damaged sewer lines &mdash; accurate bids, repairs, and full replacements.","card--gold"),
       ("flame","Frozen or Burst Pipes","Dakota winters are tough &mdash; we thaw, repair, and prevent.","card--coral"),
     ], bg="bg-checker")
+  + emergency_note()
 )
 
 # RESIDENTIAL SERVICES + VENDOR PRODUCT LINES
@@ -457,6 +468,7 @@ heating_body = (
     </div>
   </div>
 </section>'''
+  + emergency_note()
 )
 
 # BOILERS
@@ -631,6 +643,10 @@ FAQS = [
    "Yes. Mitchell Plumbing &amp; Heating serves residential, commercial, and government customers. From a small home repair to a large commercial boiler system, no job is too big or too small."),
   ("What areas do you serve?",
    f"We&apos;re based in Mitchell, SD and serve communities across Eastern South Dakota, including {', '.join(AREAS[:8])} and the rest of Davison County and nearby areas. If you&apos;re not sure, just call {PD}."),
+  ("Do you offer 24/7 or after-hours emergency plumbing and heating service?",
+   f"No. {EMERGENCY_POLICY.replace('&', '&amp;')} Our office is open Monday through Friday, 8:00am to 5:00pm. Call {PD} or send a request online any time, and we&apos;ll get you on the schedule for the next business day."),
+  ("What should I do if I have a plumbing or heating emergency after hours?",
+   f"Call {PD} or send a request online and we&apos;ll handle it on the next business day. In the meantime, limit the damage: for a leak or burst pipe, close the fixture&apos;s shutoff valve or your home&apos;s main water shutoff. If you have no heat in freezing weather, open cabinet doors under sinks and let faucets drip to help keep pipes from freezing. If you smell gas, leave the building right away and call your gas utility or 911 from outside."),
   ("What kind of heating systems do you install?",
    "We install, service, and repair radiant in-floor and hydronic heating and high-efficiency Lochinvar boiler systems for homes and businesses."),
   ("Do you do air conditioning or cooling?",
@@ -693,7 +709,7 @@ contact_body = f'''
           <div class="info-tile"><div class="ico">{IC["phone"]}</div><div><h3>Call or Text</h3><a href="tel:{P}"><strong>{PD}</strong></a></div></div>
           <div class="info-tile"><div class="ico">{IC["mail"]}</div><div><h3>Email</h3><a href="mailto:{EMAIL}">{EMAIL}</a></div></div>
           <div class="info-tile"><div class="ico">{IC["pin"]}</div><div><h3>Visit Us</h3>{ADDR_ST}<br>{ADDR_CITY}, {ADDR_STATE} {ADDR_ZIP}</div></div>
-          <div class="info-tile"><div class="ico">{IC["clock"]}</div><div><h3>Hours</h3>Mon&ndash;Fri 8:00am&ndash;5:00pm</div></div>
+          <div class="info-tile"><div class="ico">{IC["clock"]}</div><div><h3>Hours</h3>Mon&ndash;Fri 8:00am&ndash;5:00pm<br><span class="form-note">No after-hours or weekend emergency service &mdash; emergencies are handled the next business day.</span></div></div>
         </div>
         <div class="card" style="padding:0;overflow:hidden;margin-top:26px">
           <iframe title="Map to Mitchell Plumbing &amp; Heating" width="100%" height="260" style="border:0;display:block" loading="lazy"
@@ -704,7 +720,7 @@ contact_body = f'''
         <form class="form-card" data-quote-form action="{FORM_ENDPOINT or '#'}" data-endpoint="{FORM_ENDPOINT}" method="post"{UPLOAD_ENCTYPE} novalidate>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <h2 style="font-family:var(--font-head);text-transform:uppercase;margin-bottom:4px">How Can We Help?</h2>
-          <p class="form-note" style="margin-bottom:18px">Fill this out and Mitch will get right back to you. <span class="req">*</span> required.</p>
+          <p class="form-note" style="margin-bottom:18px">Fill this out and Mitch will get right back to you during business hours &mdash; requests sent after hours are handled the next business day. <span class="req">*</span> required.</p>
           <div class="field"><label for="purpose">What do you need? <span class="req">*</span></label>
             <select id="purpose" name="purpose" required>
               <option value="estimate" selected>Request a Free Estimate</option>

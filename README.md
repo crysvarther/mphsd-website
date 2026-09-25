@@ -54,8 +54,9 @@ identical across every page. To change content:
 > You can also edit the `.html` files directly if you prefer — just know a future
 > `python pages.py` run will overwrite them.
 
-**Single source of truth** for phone, address, hours, service-area towns, and the
-testimonial lives at the top of `build.py`. Change it once, re-run, done.
+**Single source of truth** for phone, address, hours, the emergency / after-hours policy
+(`EMERGENCY_POLICY` — next-business-day, no 24/7), service-area towns, and the testimonial
+lives at the top of `build.py`. Change it once, re-run, done.
 
 ## Live-site switches (in `build.py`)
 
